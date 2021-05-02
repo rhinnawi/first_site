@@ -1,2 +1,2 @@
-# prototype_site
-Website for Austin Wright's "Prototype" brand and store site.
+# first_site
+Developing the portfolio page for Sunbird Web.
