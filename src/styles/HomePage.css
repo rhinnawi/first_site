@@ -1,0 +1,9 @@
+.HomePage {
+    background-color: grey;
+    color: teal;
+    margin: 5px;
+}
+
+h1.HomePage {
+    color: azure;
+}

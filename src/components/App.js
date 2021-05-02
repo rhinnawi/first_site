@@ -1,5 +1,7 @@
 import logo from './logo.svg';
-import './App.css';
+import '../styles/App.css';
+import { Route, Switch } from 'react-router';
+import HomePage from './HomePage'
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+      </Switch>
     </div>
   );
 }
