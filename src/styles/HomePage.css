@@ -1,9 +1,17 @@
 .HomePage {
+    width: 75%;
+    min-height: 80vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     background-color: grey;
-    color: teal;
-    margin: 5px;
+    color: cyan;
+    text-align: center;
 }
 
-h1.HomePage {
-    color: azure;
+h1 {
+    color: cyan;
+    justify-self: center;
+    align-self: center;
 }

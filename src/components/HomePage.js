@@ -4,8 +4,8 @@ import '../styles/HomePage.css'
 function HomePage(props) {
     return(
         <div className="HomePage">
-            <h1 className="HomePage">Hello, World!</h1>
-            <p>Testing CSS...</p>
+            <h1>Welcome to Sunbird Web</h1>
+            <p>Page under construction...</p>
         </div>
     )
 }
