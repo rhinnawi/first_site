@@ -3,11 +3,13 @@ import { Route, Switch } from 'react-router';
 import HomePage from './HomePage'
 import Header from './Header'
 import Footer from './Footer'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <AmplifySignOut />
 
       <main>
         <Switch>
@@ -20,4 +22,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
