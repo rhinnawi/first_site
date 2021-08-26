@@ -3,9 +3,9 @@ import '../styles/Header.css'
 
 function Header(props) {
     return(
-        <header className="Header">
+        <div className="Header">
             <h1>Sunbird Web</h1>
-        </header>
+        </div>
     );
 }
 
