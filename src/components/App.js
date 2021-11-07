@@ -1,5 +1,6 @@
 import '../styles/App.css';
 import { Route, Switch } from 'react-router';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import HomePage from './HomePage'
 import Header from './Header'
 import Footer from './Footer'

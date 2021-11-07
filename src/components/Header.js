@@ -1,10 +1,21 @@
 import React from 'react';
-import '../styles/Header.css'
+import '../styles/Header.css';
+// import Navbar from 'react-bootstrap/Navbar';
+// import { Container } from "react-bootstrap/Container";
+import Sidebar from "./Sidebar";
+import {Navbar, Container} from "react-bootstrap";
 
 function Header(props) {
+    const {Brand, Toggle} = Navbar;
     return(
         <header className="Header">
-            <h1>Sunbird Web</h1>
+            <Container fluid>
+                <Navbar bg="light" expand={false}>
+                    <Brand href='#'>Sunbird Web</Brand>
+                    <Toggle aria-controls="offcanvasNavbar" />
+                    <Sidebar />
+                </Navbar>
+            </Container>
         </header>
     );
 }
