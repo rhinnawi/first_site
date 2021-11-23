@@ -1,7 +1,5 @@
 import React from 'react';
 import '../styles/Header.css';
-// import Navbar from 'react-bootstrap/Navbar';
-// import { Container } from "react-bootstrap/Container";
 import Sidebar from "./Sidebar";
 import {Navbar, Container} from "react-bootstrap";
 
@@ -10,7 +8,7 @@ function Header(props) {
     return(
         <header className="Header">
             <Container fluid>
-                <Navbar bg="light" expand={false}>
+                <Navbar expand={false}>
                     <Brand href='#'>Sunbird Web</Brand>
                     <Toggle aria-controls="offcanvasNavbar" />
                     <Sidebar />

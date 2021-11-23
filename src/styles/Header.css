@@ -1,14 +1,9 @@
 .Header {
-    min-height: 1vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    background-color: gainsboro;
-  }
-  
-  h1 {
-    color: teal;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  background-color: rgb(233, 233, 233);
+  width: 100% !important;
+}
