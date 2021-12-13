@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import '../styles/Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom'
 
 function Footer(props) {
     return(
@@ -10,9 +11,9 @@ function Footer(props) {
             <Container fluid>
                 <Row className="justify-contents-left align-items-center">
                     <Col>
-                        <Button href="#">
-                            <FontAwesomeIcon icon={ faLinkedin } />
-                        </Button>
+                        <Link to="/">
+                            <FontAwesomeIcon icon={ faLinkedin } size="lg"/>
+                        </Link>
                         <span> Contact us at support@sunbirdweb.com</span>
                     </Col>
                 </Row>

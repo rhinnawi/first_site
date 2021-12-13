@@ -1,6 +1,7 @@
 import React from 'react';
 import './HomePage.css';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Image } from 'react-bootstrap';
+import SunbirdImg from '../images/Palestine_sunbird.jpg';
 
 function HomePage(props) {
 
@@ -17,17 +18,21 @@ function HomePage(props) {
             <Container>
                 <Row>
                     <Col>
-                        <h1>Welcome to Sunbird Web</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
                        <Card id="aboutSunbirdWeb">
-                            <Card.Body>
+                            <Card.Img 
+                            as={Image} 
+                            src={SunbirdImg}
+                            alt="Sunbird image" 
+                            fluid={true}
+                            />
+                            <Card.ImgOverlay>
+                                <Card.Header>
+                                    <h1>Welcome to Sunbird Web</h1>
+                                </Card.Header>
                                 <Card.Text>
                                     {aboutSunbirdWeb}
                                 </Card.Text>
-                            </Card.Body>
+                            </Card.ImgOverlay>
                         </Card> 
                     </Col>
                 </Row>
