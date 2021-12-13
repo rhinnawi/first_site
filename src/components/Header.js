@@ -9,8 +9,8 @@ function Header(props) {
         <header className="Header">
             <Container fluid>
                 <Navbar expand={false}>
-                    <Brand href='#'>Sunbird Web</Brand>
-                    <Toggle aria-controls="offcanvasNavbar" />
+                    <Brand href='#' style={{ color: 'white' }}>Sunbird Web</Brand>
+                    <Toggle aria-controls="offcanvasNavbar" style={{borderColor: 'white', color: 'white'}} />
                     <Sidebar />
                 </Navbar>
             </Container>

@@ -4,7 +4,8 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  background-color: inherit;
+  background-color: rgb(150, 40, 170);
+  color: white;
   width: 100% !important;
   border-bottom: solid black;
 }

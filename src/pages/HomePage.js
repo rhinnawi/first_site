@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePage.css';
-import { Container, Row, Col, Card, Image } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardGroup, Image } from 'react-bootstrap';
 import SunbirdImg from '../images/Palestine_sunbird.jpg';
 
 function HomePage(props) {
@@ -18,22 +18,47 @@ function HomePage(props) {
             <Container>
                 <Row>
                     <Col>
-                       <Card id="aboutSunbirdWeb">
-                            <Card.Img 
-                            as={Image} 
-                            src={SunbirdImg}
-                            alt="Sunbird image" 
-                            fluid={true}
-                            />
-                            <Card.ImgOverlay>
-                                <Card.Header>
-                                    <h1>Welcome to Sunbird Web</h1>
-                                </Card.Header>
+                        <CardGroup>
+                            <Card>
+                                <Card.Img 
+                                as={Image} 
+                                src={SunbirdImg}
+                                alt="Sunbird image" 
+                                fluid={true}
+                                />    
+                            </Card>
+                            <Card id="aboutSunbirdWeb">
+                            <Card.Header>
+                                <h1>Welcome to Sunbird Web</h1>
+                            </Card.Header>
+                            <Card.Body className="d-flex align-items-center">
                                 <Card.Text>
                                     {aboutSunbirdWeb}
                                 </Card.Text>
-                            </Card.ImgOverlay>
-                        </Card> 
+                            </Card.Body>
+                        </Card>
+                        </CardGroup>
+                        
+                        <br/>
+
+                        <CardGroup>
+                            <Card>
+                                <Card.Title>Rani</Card.Title>
+                                <Card.Body>
+                                    <Card.Text>
+                                        Desription here.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                            <Card>
+                                <Card.Title>Matt</Card.Title>
+                                <Card.Body>
+                                    <Card.Text>
+                                        Desription here.
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </CardGroup>
                     </Col>
                 </Row>
             </Container>
