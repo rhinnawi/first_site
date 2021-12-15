@@ -11,4 +11,51 @@ main {
   justify-content: center;
   font-size: calc(10px + 1vmin);
   background-color: inherit;
+  min-height: 87vh;
+}
+
+#HomePage {
+  width: 75%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 1em;
+}
+
+#aboutSunbirdWeb {
+  font-size: inherit;
+  /* background-color: #dcdada; */
+  padding: 10px;
+  border: 0;
+}
+
+#NotFound {
+  width: 75%;
+}
+
+#Header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  background-color: rgb(150, 40, 170);
+  color: white;
+  width: 100% !important;
+  border-bottom: solid black;
+}
+
+#Footer {
+  color: black;
+  background-color: #fcf4fe;
+  /* position: fixed; */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 2px 4px;
+  min-height: 25px;
+  border-top: 1px solid lightgrey;
 }
