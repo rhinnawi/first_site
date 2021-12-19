@@ -47,9 +47,11 @@ function HomePage(props) {
                   alt="Sunbird image"
                   fluid={true}
                 />
-                <Card.Text className="caption">
-                  Image Source: Wikipedia
-                </Card.Text>
+                <Card.Body className="d-flex align-items-center justify-content-center p-0 m-0">
+                  <Card.Text className="caption align-self-center">
+                    Image Source: Wikipedia
+                  </Card.Text>
+                </Card.Body>
               </Card>
               <Card id="aboutSunbirdWeb">
                 <Card.Header>
