@@ -12,6 +12,28 @@ function HomePage(props) {
         offer, interests, experiences, and more!
     `;
 
+  const aboutMatt = `
+        Matt is an electrical engineer at TK Elevators where his main work focuses
+        on PC boards. He graduated from Ohio State University with a BS in Engineering
+        Physics and minor in Spanish, a language he has grown conversational in. 
+        As a student he partook in research, a competition in China, and completed
+        project-based coursework in the field. These days, when he's not working, 
+        you can find him in a climbing gym, playing piano, hiking in the great outdoors, 
+        exploring new restaurants and local breweries, or simply enjoying downtime with 
+        his cat, Dot!
+  `;
+
+  const aboutRani = `
+        A self-described jack of all trades, Rani naturally found himself working as a 
+        full-stack developer. He currently works at JPMorgan Chase after having 
+        graduated from Ohio State University, where he earned a BS in Physics and
+        minors in Astrophysics and German. At OSU, he did computational astronomy
+        research, studied abroad in Germany, and worked as an instructional and
+        teaching assistant in astronomy and Python courses and labs. Beyond 
+        coding, Rani enjoys practising his language skills in Arabic and German, 
+        travelling, cooking, and raising plants. 
+  `;
+
   return (
     <div id="HomePage">
       <Container>
@@ -25,6 +47,9 @@ function HomePage(props) {
                   alt="Sunbird image"
                   fluid={true}
                 />
+                <Card.Text className="caption">
+                  Image Source: Wikipedia
+                </Card.Text>
               </Card>
               <Card id="aboutSunbirdWeb">
                 <Card.Header>
@@ -38,20 +63,33 @@ function HomePage(props) {
 
             <br />
 
-            <CardGroup>
-              <Card>
-                <Card.Title>Rani</Card.Title>
-                <Card.Body>
-                  <Card.Text>Desription here.</Card.Text>
-                </Card.Body>
-              </Card>
-              <Card>
-                <Card.Title>Matt</Card.Title>
-                <Card.Body>
-                  <Card.Text>Desription here.</Card.Text>
-                </Card.Body>
-              </Card>
-            </CardGroup>
+            <Row>
+              <Col>
+                <Card className="descriptionCard">
+                  <Card.Title>
+                    <strong>About Rani</strong>
+                  </Card.Title>
+                  <hr style={{ padding: 0, margin: 0 }} />
+                  <Card.Body>
+                    <Card.Text>{aboutRani}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col>
+                <Card
+                  className="descriptionCard"
+                  // style={{ backgroundColor: "#fcf4fe" }}
+                >
+                  <Card.Title>
+                    <strong>About Matt</strong>
+                  </Card.Title>
+                  <hr style={{ padding: 0, margin: 0 }} />
+                  <Card.Body>
+                    <Card.Text>{aboutMatt}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

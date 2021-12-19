@@ -1,5 +1,5 @@
 .App {
-  background-color: transparent;
+  background-image: radial-gradient(rgb(247, 247, 247), white);
 }
 
 main {
@@ -11,11 +11,10 @@ main {
   justify-content: center;
   font-size: calc(10px + 1vmin);
   background-color: inherit;
-  min-height: 87vh;
+  min-height: 90vh;
 }
 
 #HomePage {
-  width: 75%;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -43,19 +42,29 @@ main {
   font-size: calc(10px + 2vmin);
   background-color: rgb(150, 40, 170);
   color: white;
-  width: 100% !important;
+  width: 100vw !important;
   border-bottom: solid black;
 }
 
 #Footer {
   color: black;
   background-color: #fcf4fe;
-  /* position: fixed; */
   left: 0;
   bottom: 0;
   width: 100%;
   margin: 0;
   padding: 2px 4px;
-  min-height: 25px;
   border-top: 1px solid lightgrey;
+  font-size: small;
+}
+
+.caption {
+  font-size: 0.7em;
+}
+
+.descriptionCard {
+  font-size: 0.8em;
+  padding: 10px;
+  margin: 10px;
+  /* border: solid 1px grey !important; */
 }
