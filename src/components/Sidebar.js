@@ -23,7 +23,7 @@ function Sidebar(props) {
             <Link to="/">Home</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to="/workflow">Our Workflow</Link>
+            <Link to="/stack">Our Stack</Link>
           </Nav.Link>
           <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
             <Item href="#action3">Action</Item>

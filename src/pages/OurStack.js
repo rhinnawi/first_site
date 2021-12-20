@@ -16,8 +16,8 @@ const OurStack = (props) => {
   const stack = [
     { icon: faAws, tool: "AWS Amplify", purpose: "Back-end, CI/CD" },
     { icon: faReact, tool: "React (v16.8+)", purpose: "User Interface" },
-    { icon: faHtml5, tool: "HTML5", purpose: "Front-end structure" },
-    { icon: faCss3, tool: "CSS3", purpose: "Front-end styling" },
+    { icon: faHtml5, tool: "HTML", purpose: "Front-end structure" },
+    { icon: faCss3, tool: "CSS", purpose: "Front-end styling" },
     { icon: faJsSquare, tool: "JavaScript (ES6)", purpose: "User Interface" },
     { icon: faBootstrap, tool: "Bootstrap", purpose: "UI components" },
     {
@@ -29,9 +29,9 @@ const OurStack = (props) => {
 
   return (
     <div id="OurStack">
-      <Table style={{ textAlign: "center" }}>
+      <Table style={{ textAlign: "center", verticalAlign: "middle" }}>
         <thead>
-          <th></th>
+          <th width="35%"></th>
           <th>Tool</th>
           <th>Purpose</th>
         </thead>
@@ -40,7 +40,7 @@ const OurStack = (props) => {
             return (
               <tr>
                 <td>
-                  <FontAwesomeIcon icon={icon} size="lg" />
+                  <FontAwesomeIcon icon={icon} size="4x" />
                 </td>
                 <td>{tool}</td>
                 <td>{purpose}</td>
