@@ -36,7 +36,7 @@ function HomePage(props) {
 
   return (
     <div id="HomePage">
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <CardGroup>
