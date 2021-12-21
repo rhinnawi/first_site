@@ -27,8 +27,20 @@ const OurStack = (props) => {
     },
   ];
 
+  const description = `
+    Sunbird Web is leveraging modern tools for a modern workflow. We actively 
+    strive to enhance our tech stack, whether by advancing how we use our 
+    current toolset or by implementing new technologies along the way. In 
+    order to keep our applications up-to-date, reduce risk, enhance site 
+    performance, and reduce friction in our workflow, we use the latest stable 
+    versions of the tools listed below.
+  `;
+
   return (
     <div id="OurStack">
+      <h2>Our Stack</h2>
+      <p>{description}</p>
+      <br />
       <Table style={{ textAlign: "center", verticalAlign: "middle" }}>
         <thead>
           <th width="35%"></th>

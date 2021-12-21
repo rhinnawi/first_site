@@ -7,14 +7,14 @@ body {
 main {
   display: flex;
   flex: 1 0 auto;
-  min-height: 100vh;
+  min-height: 95vh;
   margin: 10px auto;
   width: 100%;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 1vmin);
   background-color: inherit;
-  padding-bottom: 3rem;
+  /* padding-bottom: 3rem; */
 }
 
 .App {
@@ -62,7 +62,7 @@ main {
 }
 
 #OurStack {
-  width: 90%;
+  width: 75%;
 }
 
 .fa-css3 {
