@@ -36,11 +36,30 @@ const OurStack = (props) => {
     versions of the tools listed below.
   `;
 
+  const futureToolsBlurb = `
+    As we evolve this site and other projects, we will naturally need to 
+    consider tools that meet our future needs. Although we are not prematurely
+    jumping into newer tooling at the moment, we have our eyes on some that has
+    great potential for us down the line. 
+  `;
+
+  const futureTools = [
+    { tool: "TypeScript", desc: "Stricter typing in JavaScript" },
+    { tool: "SASS", desc: "Enhanced styling functionality" },
+    { tool: "Node.js", desc: "Backend functions, REST API" },
+    {
+      tool: "AWS S3, Lambda, API Gateway",
+      desc: "Host API, store back-end functions, store images",
+    },
+  ];
+
   return (
     <div id="OurStack">
       <h2>Our Stack</h2>
       <p>{description}</p>
+
       <br />
+
       <Table style={{ textAlign: "center", verticalAlign: "middle" }}>
         <thead>
           <th width="35%"></th>
@@ -50,7 +69,7 @@ const OurStack = (props) => {
         <tbody>
           {stack.map(({ icon, tool, purpose }) => {
             return (
-              <tr>
+              <tr key={tool}>
                 <td>
                   <FontAwesomeIcon icon={icon} size="4x" />
                 </td>
@@ -61,6 +80,21 @@ const OurStack = (props) => {
           })}
         </tbody>
       </Table>
+
+      <br />
+      <br />
+
+      <h3>Future tooling considerations</h3>
+      <p>
+        <small>{futureToolsBlurb}</small>
+      </p>
+      <ul>
+        {futureTools.map(({ tool, desc }) => (
+          <li>
+            <strong>{tool}</strong>: {desc}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
