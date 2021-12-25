@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import { Container, Row, Col, Card, Accordion, Table } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAws,
