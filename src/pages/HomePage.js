@@ -38,7 +38,7 @@ function HomePage(props) {
     <div id="HomePage">
       <Container fluid>
         <Row>
-          <Col>
+          <Col className="px-0">
             <CardGroup>
               <Card>
                 <Card.Img
@@ -66,7 +66,7 @@ function HomePage(props) {
             <br />
 
             <Row>
-              <Col>
+              <Col className="px-0 mx-0">
                 <Card className="descriptionCard">
                   <Card.Title>
                     <strong>About Rani</strong>
