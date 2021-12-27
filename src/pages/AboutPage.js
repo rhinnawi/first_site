@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Nav, Tab, Container, Row, Col } from "react-bootstrap";
 import "../styles/App.css";
 import HomePage from "./HomePage";
+import Profile from "../components/Profile";
 
 const ACTIVE_TAB_CLASSES = "tab tab-selected";
 const DEFAULT_TAB_CLASSES = "tab";
@@ -14,12 +15,7 @@ const AboutPageNav = (props) => {
   ];
 
   return (
-    <Nav
-      fill
-      className="flex-column"
-      style={{ height: "100%" }}
-      id="aboutPageNav"
-    >
+    <Nav fill className="flex-column" id="AboutPageNav">
       {tabs.map(({ id, title }) => {
         return (
           <Nav.Item key={id} id={id} className={props.tabClasses[id]}>
@@ -67,31 +63,27 @@ function AboutPage(props) {
   return (
     <Tab.Container
       defaultActiveKey="aboutUs"
-      onSelect={(eventKey, e) => handleTabColor(eventKey)}
+      onSelect={(eventKey) => handleTabColor(eventKey)}
     >
-      <Container fluid id="AboutPage">
-        <Row className="px-0 py-2 d-flex justify-content-center">
-          <Col sm={1} className="py-2">
+      <Container id="AboutPage" className="d-flex justify-content-center" fluid>
+        <Row className="px-0 py-2" style={{ width: "100%", minHeight: "80vh" }}>
+          <Col sm={12} md={1} className="py-2 px-0">
             <AboutPageNav tabClasses={tabClasses} />
           </Col>
           <Col
-            sm={11}
-            width="100%"
-            className="d-flex align-items-center justify-content-center px-0 py-2"
+            sm={12}
+            md={11}
+            className="d-flex align-items-top justify-content-left px-0 my-2 content"
           >
-            <Tab.Content className="d-flex justify-content-center">
+            <Tab.Content style={{ width: "100%" }}>
               <Tab.Pane eventKey="aboutUs">
                 <HomePage />
               </Tab.Pane>
               <Tab.Pane eventKey="aboutMatt">
-                <div>
-                  <p>About Matt</p>
-                </div>
+                <Profile name="Matt" />
               </Tab.Pane>
               <Tab.Pane eventKey="aboutRani">
-                <div>
-                  <p>About Rani</p>
-                </div>
+                <Profile name="Rani" />
               </Tab.Pane>
             </Tab.Content>
           </Col>
