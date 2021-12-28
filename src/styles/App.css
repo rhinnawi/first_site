@@ -73,6 +73,7 @@ main {
   overflow-y: "scroll";
   max-width: "100%";
   border-top: solid 1px grey;
+  padding: 1rem;
 }
 
 .profile {

@@ -1,7 +1,18 @@
 import React from "react";
 import "../styles/App.css";
-import { Container, Row, Col, Card, CardGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardGroup,
+  ProgressBar,
+} from "react-bootstrap";
 
+/*
+Profile section that outputs formatted educational information. Itms are split
+across two rows and stylised to be responsive for multiple screen widths.
+*/
 const EducationSection = (props) => {
   return (
     <div>
@@ -33,6 +44,95 @@ const EducationSection = (props) => {
   );
 };
 
+const Skills = (props) => {
+  const technicalSkills = [
+    { skill: "Python", progress: 80 },
+    { skill: "JavaScript (ES6)", progress: 60 },
+    { skill: "ReactJS", progress: 50 },
+    { skill: "HTML & CSS", progress: 70 },
+    { skill: "Cloud Foundry", progress: 30 },
+    { skill: "Tableau", progress: 30 },
+  ];
+
+  const additionalSkills = [
+    "Scrum",
+    "Teaching / tutoring",
+    "Jira",
+    "Confluence",
+    "SharePoint",
+  ];
+
+  return (
+    <div style={{ width: "100%" }}>
+      <CardGroup style={{ maxHeight: "fit-content" }}>
+        <Card
+          style={{
+            padding: "1rem",
+            backgroundColor: "white",
+            color: "red",
+            minWidth: "fit-content",
+            // minHeight: "fit-content",
+          }}
+          className="d-flex justify-content-center"
+        >
+          <span>Technical Skills</span>
+        </Card>
+        {technicalSkills.map(({ skill, progress }) => {
+          return (
+            <Card
+              style={{
+                fontSize: "0.9em",
+                padding: "1rem",
+                backgroundColor: "red",
+                color: "white",
+                border: "solid 1px white",
+                minWidth: "fit-content",
+                maxWidth: "10rem",
+                maxHeight: "8rem",
+              }}
+            >
+              <p>{skill}</p>
+              <ProgressBar now={progress} style={{ maxWidth: "8rem" }} />
+            </Card>
+          );
+        })}
+      </CardGroup>
+      <br />
+      <CardGroup
+        className="d-flex flex-wrap"
+        style={{ maxHeight: "fit-content" }}
+      >
+        <Card
+          style={{
+            padding: "1rem",
+            backgroundColor: "white",
+            color: "blue",
+            minWidth: "fit-content",
+          }}
+          className="d-flex justify-content-center"
+        >
+          Additional Skills
+        </Card>
+        {additionalSkills.map((skill) => {
+          return (
+            <Card
+              style={{
+                fontSize: "0.9em",
+                padding: "1rem",
+                backgroundColor: "blue",
+                color: "white",
+                border: "solid 1px white",
+              }}
+            >
+              {skill}
+            </Card>
+          );
+        })}
+      </CardGroup>
+    </div>
+  );
+};
+
 const Profile = (props) => {
   return (
     <Container fluid className="profile py-2">
@@ -47,13 +147,18 @@ const Profile = (props) => {
       <Row>
         <Col>
           <h4>Skills</h4>
-          <Card>
+          {/* <Card>
             <Row className="d-flex justify-items-end">
               <Col>
-                <Card>Skill 1Skill 1Skill 1Skill 1Skill 1Skill 1Skill 1</Card>
+                <Card style={{ color: "red" }}>Technical</Card>
               </Col>
-              <Col>
-                <Card>Skill 2</Card>
+              <Col className="d-flex align-items-center">
+                <Card
+                  className="p-2"
+                  style={{ backgroundColor: "red", color: "white" }}
+                >
+                  Skill 2
+                </Card>
               </Col>
               <Col>
                 <Card>Skill 2</Card>
@@ -65,7 +170,8 @@ const Profile = (props) => {
                 <Card>Skill 2</Card>
               </Col>
             </Row>
-          </Card>
+          </Card> */}
+          <Skills />
         </Col>
       </Row>
     </Container>
