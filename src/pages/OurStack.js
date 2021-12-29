@@ -55,8 +55,10 @@ const OurStack = (props) => {
 
   return (
     <div id="OurStack">
-      <h2>Our Stack</h2>
-      <p>{description}</p>
+      <section className="py-3 my-2">
+        <h2>Our Stack</h2>
+        <p>{description}</p>
+      </section>
 
       <br />
 
@@ -84,17 +86,17 @@ const OurStack = (props) => {
       <br />
       <br />
 
-      <h3>Future tooling considerations</h3>
-      <p>
-        <small>{futureToolsBlurb}</small>
-      </p>
-      <ul>
-        {futureTools.map(({ tool, desc }) => (
-          <li>
-            <strong>{tool}</strong>: {desc}
-          </li>
-        ))}
-      </ul>
+      <section className="py-3 my-3">
+        <h3>Future tooling considerations</h3>
+        <p>{futureToolsBlurb}</p>
+        <ul>
+          {futureTools.map(({ tool, desc }) => (
+            <li>
+              <strong>{tool}</strong>: {desc}
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 };

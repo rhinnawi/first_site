@@ -64,14 +64,14 @@ const Skills = (props) => {
 
   return (
     <div style={{ width: "100%" }}>
-      <CardGroup style={{ maxHeight: "fit-content" }}>
+      <CardGroup className="d-flex flex-wrap">
         <Card
           style={{
             padding: "1rem",
             backgroundColor: "white",
             color: "red",
             minWidth: "fit-content",
-            // minHeight: "fit-content",
+            maxWidth: "max-content",
           }}
           className="d-flex justify-content-center"
         >
@@ -80,19 +80,20 @@ const Skills = (props) => {
         {technicalSkills.map(({ skill, progress }) => {
           return (
             <Card
-              style={{
-                fontSize: "0.9em",
-                padding: "1rem",
-                backgroundColor: "red",
-                color: "white",
-                border: "solid 1px white",
-                minWidth: "fit-content",
-                maxWidth: "10rem",
-                maxHeight: "8rem",
-              }}
+              // style={{
+              //   fontSize: "0.9em",
+              //   padding: "1rem",
+              //   backgroundColor: "red",
+              //   color: "white",
+              //   border: "solid 1px white",
+              //   minWidth: "fit-content",
+              //   maxWidth: "10rem",
+              //   maxHeight: "8rem",
+              // }}
+              className="technical-skills"
             >
               <p>{skill}</p>
-              <ProgressBar now={progress} style={{ maxWidth: "8rem" }} />
+              <ProgressBar now={progress} />
             </Card>
           );
         })}

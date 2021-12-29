@@ -49,7 +49,7 @@ function HomePage(props) {
                 />
                 <Card.Body className="d-flex align-items-center justify-content-center p-0 m-0">
                   <Card.Text className="caption align-self-center">
-                    Image Source: Wikipedia
+                    <small>Image Source: Wikipedia</small>
                   </Card.Text>
                 </Card.Body>
               </Card>

@@ -113,6 +113,18 @@ main {
   border: 0;
 }
 
+.technical-skills {
+  color: white;
+  background-color: red !important;
+  font-size: 0.9em;
+  padding: 1rem;
+  border: solid 1px white !important;
+  min-width: fit-content;
+  max-width: 15rem;
+  min-height: fit-content !important;
+  max-height: 8rem;
+}
+
 @media only screen and (max-width: 768px) {
   .tab a {
     height: fit-content;
@@ -142,6 +154,10 @@ main {
 
 #OurStack {
   width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
 }
 
 .fa-css3 {
