@@ -62,75 +62,106 @@ const Skills = (props) => {
     "SharePoint",
   ];
 
+  /* 
+  Order technical skills from most to least progress 
+  Reference: https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ 
+  */
+  technicalSkills.sort((skillA, skillB) =>
+    skillA.progress > skillB.progress ? -1 : 1
+  );
+
+  /* 
+  Get card width and max card width based off length of string for the skill 
+  with the longest name 
+  */
+  let longestSkillName = 0;
+  technicalSkills.forEach((skill) => {
+    let skillNameLength = skill["skill"].length;
+    longestSkillName =
+      skillNameLength > longestSkillName ? skillNameLength : longestSkillName;
+  });
+  let cardWidth = `${longestSkillName}rem`;
+  let maxCardWidth = `${longestSkillName + 2}rem`;
+
   return (
-    <div style={{ width: "100%" }}>
-      <CardGroup className="d-flex flex-wrap">
-        <Card
-          style={{
-            padding: "1rem",
-            backgroundColor: "white",
-            color: "red",
-            minWidth: "fit-content",
-            maxWidth: "max-content",
-          }}
-          className="d-flex justify-content-center"
-        >
-          <span>Technical Skills</span>
-        </Card>
-        {technicalSkills.map(({ skill, progress }) => {
-          return (
+    <Row>
+      <Col style={{ width: "100%" }}>
+        <h4>Skills</h4>
+        <CardGroup className="d-flex flex-wrap justify-content-start">
+          <Col style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}>
             <Card
-              // style={{
-              //   fontSize: "0.9em",
-              //   padding: "1rem",
-              //   backgroundColor: "red",
-              //   color: "white",
-              //   border: "solid 1px white",
-              //   minWidth: "fit-content",
-              //   maxWidth: "10rem",
-              //   maxHeight: "8rem",
-              // }}
-              className="technical-skills"
-            >
-              <p>{skill}</p>
-              <ProgressBar now={progress} />
-            </Card>
-          );
-        })}
-      </CardGroup>
-      <br />
-      <CardGroup
-        className="d-flex flex-wrap"
-        style={{ maxHeight: "fit-content" }}
-      >
-        <Card
-          style={{
-            padding: "1rem",
-            backgroundColor: "white",
-            color: "blue",
-            minWidth: "fit-content",
-          }}
-          className="d-flex justify-content-center"
-        >
-          Additional Skills
-        </Card>
-        {additionalSkills.map((skill) => {
-          return (
-            <Card
+              className="d-flex justify-content-center skill-card"
               style={{
-                fontSize: "0.9em",
-                padding: "1rem",
-                backgroundColor: "blue",
-                color: "white",
-                border: "solid 1px white",
+                backgroundColor: "!important",
+                color: "red",
+                width: "100%",
+                height: "100%",
+                textAlign: "center",
               }}
             >
-              {skill}
+              <span>Technical Skills</span>
             </Card>
-          );
-        })}
-      </CardGroup>
-    </div>
+          </Col>
+          {technicalSkills.map(({ skill, progress }) => {
+            return (
+              <Col
+                key={skill}
+                style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+                className="p-0 m-0"
+              >
+                <Card
+                  className="skill-card"
+                  style={{
+                    width: "100%",
+                    backgroundColor: "red",
+                  }}
+                >
+                  <Card.Body>
+                    <Card.Text>
+                      <span>{skill}</span>
+                    </Card.Text>
+                    <ProgressBar now={progress} />
+                  </Card.Body>
+                </Card>
+              </Col>
+            );
+          })}
+        </CardGroup>
+        <br />
+        <CardGroup
+          className="d-flex flex-wrap"
+          style={{ maxHeight: "fit-content" }}
+        >
+          <Card
+            style={{
+              padding: "1rem",
+              backgroundColor: "white",
+              color: "blue",
+              minWidth: "fit-content",
+            }}
+            className="d-flex justify-content-center"
+          >
+            Additional Skills
+          </Card>
+          {additionalSkills.map((skill) => {
+            return (
+              <Card
+                key={skill}
+                style={{
+                  fontSize: "0.9em",
+                  padding: "1rem",
+                  backgroundColor: "blue",
+                  color: "white",
+                  border: "solid 1px white",
+                }}
+              >
+                {skill}
+              </Card>
+            );
+          })}
+        </CardGroup>
+      </Col>
+    </Row>
   );
 };
 
@@ -145,36 +176,7 @@ const Profile = (props) => {
       <hr />
       <EducationSection />
       <br />
-      <Row>
-        <Col>
-          <h4>Skills</h4>
-          {/* <Card>
-            <Row className="d-flex justify-items-end">
-              <Col>
-                <Card style={{ color: "red" }}>Technical</Card>
-              </Col>
-              <Col className="d-flex align-items-center">
-                <Card
-                  className="p-2"
-                  style={{ backgroundColor: "red", color: "white" }}
-                >
-                  Skill 2
-                </Card>
-              </Col>
-              <Col>
-                <Card>Skill 2</Card>
-              </Col>
-              <Col>
-                <Card>Skill 2</Card>
-              </Col>
-              <Col>
-                <Card>Skill 2</Card>
-              </Col>
-            </Row>
-          </Card> */}
-          <Skills />
-        </Col>
-      </Row>
+      <Skills />
     </Container>
   );
 };

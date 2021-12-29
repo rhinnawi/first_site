@@ -113,39 +113,17 @@ main {
   border: 0;
 }
 
-.technical-skills {
+.skill-card {
   color: white;
-  background-color: red !important;
-  font-size: 0.9em;
-  padding: 1rem;
-  border: solid 1px white !important;
-  min-width: fit-content;
-  max-width: 15rem;
+  /* background-color: red !important; */
+  font-size: 0.95rem;
+  padding: 0.2rem;
+  border: solid 0.5px white !important;
   min-height: fit-content !important;
-  max-height: 8rem;
 }
 
-@media only screen and (max-width: 768px) {
-  .tab a {
-    height: fit-content;
-  }
-
-  .tab {
-    max-height: fit-content;
-  }
-
-  .tab.tab-selected a {
-    border: solid 1px grey;
-  }
-
-  #AboutPageNav {
-    height: fit-content;
-    border: 0;
-  }
-
-  .content {
-    border: 0;
-  }
+.skill-card span {
+  word-break: keep-all !important;
 }
 
 #aboutSunbirdWeb {
@@ -187,4 +165,31 @@ main {
   font-size: 1rem;
   padding: 10px;
   margin: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .tab a {
+    height: fit-content;
+  }
+
+  .tab {
+    max-height: fit-content;
+  }
+
+  .tab.tab-selected a {
+    border: solid 1px grey;
+  }
+
+  #AboutPageNav {
+    height: fit-content;
+    border: 0;
+  }
+
+  .content {
+    border: 0;
+  }
+
+  .skill-card {
+    width: 100%;
+  }
 }
