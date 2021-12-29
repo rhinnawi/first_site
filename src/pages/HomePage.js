@@ -67,7 +67,7 @@ function HomePage(props) {
 
             <Row>
               <Col className="px-0 mx-0">
-                <Card className="descriptionCard">
+                <Card className="description-card">
                   <Card.Title>
                     <strong>About Rani</strong>
                   </Card.Title>
@@ -78,10 +78,7 @@ function HomePage(props) {
                 </Card>
               </Col>
               <Col>
-                <Card
-                  className="descriptionCard"
-                  // style={{ backgroundColor: "#fcf4fe" }}
-                >
+                <Card className="description-card">
                   <Card.Title>
                     <strong>About Matt</strong>
                   </Card.Title>

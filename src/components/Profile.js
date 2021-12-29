@@ -87,16 +87,18 @@ const Skills = (props) => {
     <Row>
       <Col style={{ width: "100%" }}>
         <h4>Skills</h4>
-        <CardGroup className="d-flex flex-wrap justify-content-start">
-          <Col style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}>
+        <CardGroup className="d-flex flex-wrap">
+          <Col
+            style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+            className="skill-card-col"
+          >
             <Card
               className="d-flex justify-content-center skill-card"
               style={{
-                backgroundColor: "!important",
                 color: "red",
-                width: "100%",
                 height: "100%",
                 textAlign: "center",
+                borderColor: "red",
               }}
             >
               <span>Technical Skills</span>
@@ -107,20 +109,19 @@ const Skills = (props) => {
               <Col
                 key={skill}
                 style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-                className="p-0 m-0"
+                className="p-0 m-0 skill-card-col"
               >
                 <Card
                   className="skill-card"
                   style={{
-                    width: "100%",
                     backgroundColor: "red",
                   }}
                 >
-                  <Card.Body>
-                    <Card.Text>
+                  <Card.Body className="p-2">
+                    <Card.Text className="py-0 my-1">
                       <span>{skill}</span>
                     </Card.Text>
-                    <ProgressBar now={progress} />
+                    <ProgressBar now={progress} variant={"progress-bar"} />
                   </Card.Body>
                 </Card>
               </Col>
