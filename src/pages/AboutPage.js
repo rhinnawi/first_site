@@ -41,7 +41,7 @@ function AboutPage(props) {
   });
 
   // Function for setting up new tab backgrounds
-  const getNewTabClasses = (oldTab, newTab) => {
+  const updateTabClasses = (oldTab, newTab) => {
     let newClasses = { ...tabClasses };
     newClasses[oldTab] = DEFAULT_TAB_CLASSES;
     newClasses[newTab] = ACTIVE_TAB_CLASSES;
@@ -56,7 +56,7 @@ function AboutPage(props) {
   const handleTabColor = (eventKey) => {
     if (eventKey === activeTab) return;
 
-    setTabClasses(getNewTabClasses(activeTab, eventKey));
+    setTabClasses(updateTabClasses(activeTab, eventKey));
     setActiveTab(eventKey);
   };
 

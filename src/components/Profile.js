@@ -90,7 +90,7 @@ const Skills = (props) => {
   });
 
   let cardWidth = `${longestSkillName * 0.6}rem`;
-  let maxCardWidth = `${(longestSkillName + 2) * 0.6}rem`;
+  let maxCardWidth = `${(longestSkillName + 1) * 0.6}rem`;
 
   return (
     <Row>
