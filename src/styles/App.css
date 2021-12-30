@@ -100,15 +100,15 @@ main {
   justify-content: center;
   border: solid 1px gainsboro;
   border-left: 0;
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 10;
   max-width: 100%;
 }
 
 .tab.tab-selected a {
   color: black;
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
   background-color: transparent;
   border: 0;
 }
