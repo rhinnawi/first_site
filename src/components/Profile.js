@@ -19,7 +19,7 @@ gradYear (number)
 majors (array of strings)
 minors (array of strings)
 */
-const EducationSection = (props) => {
+const EducationSection = ({ name, gradYear, degrees, minors }) => {
   return (
     <div>
       <Row>
@@ -31,17 +31,17 @@ const EducationSection = (props) => {
         <Col>
           <Row className="d-flex justify-content-between my-0">
             <Col xs={8}>
-              <span>{props.name}</span>
+              <span>{name}</span>
             </Col>
             <Col xs={4} style={{ textAlign: "right" }}>
-              <span>{props.gradYear}</span>
+              <span>{gradYear}</span>
             </Col>
           </Row>
           <Row>
             <Col>
-              <span className="caption">
-                {props.degrees.join(", ")}. Minors: {props.minors.join(", ")}
-              </span>
+              <small>
+                {degrees.join(", ")}. Minors: {minors.join(", ")}
+              </small>
             </Col>
           </Row>
         </Col>
@@ -58,10 +58,13 @@ upon the length of the skill with the longest name.
 Expected props:
 technicalSkills - Array of Objects with properties: 
   skill (string), progress (number)
+languageSkills - Array of Objects with properties:
+  language (string), notes (string)
 additionalSkills - Array of strings
 */
 const Skills = (props) => {
   let technicalSkills = props.technicalSkills;
+  let languageSkills = props.languageSkills;
   let additionalSkills = props.additionalSkills;
 
   /* 
@@ -162,6 +165,53 @@ const Skills = (props) => {
                   borderColor: "blue",
                 }}
               >
+                <span>Language Skills</span>
+              </Card>
+            </Col>
+            {languageSkills.map(({ language, notes }) => {
+              return (
+                <Col
+                  key={language}
+                  style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+                  className="p-0 m-0 skill-card-col"
+                >
+                  <Card
+                    className="skill-card"
+                    style={{
+                      backgroundColor: "blue",
+                    }}
+                  >
+                    <Card.Body className="p-2">
+                      <Card.Text className="py-0 my-1">
+                        <span>{language}</span>
+                        <small>{notes}</small>
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </CardGroup>
+        <br />
+        <CardGroup
+          className="d-flex flex-wrap"
+          style={{ maxHeight: "fit-content" }}
+        >
+          <Row style={{ width: "100%" }}>
+            <Col
+              style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+              className="skill-card-col p-0"
+            >
+              <Card
+                className="d-flex justify-content-center skill-card"
+                style={{
+                  color: "blue",
+                  height: "100%",
+                  textAlign: "center",
+                  borderColor: "blue",
+                }}
+              >
                 <span>Additional Skills</span>
               </Card>
             </Col>
@@ -194,6 +244,57 @@ const Skills = (props) => {
   );
 };
 
+const Experiences = (props) => {
+  const role = "Full-Stack Software Developer";
+  const dates = "July 2020 - Present";
+  const organization = "JPMorgan Chase";
+  const location = "Columbus, OH";
+  const bulletPoints = [
+    `Developed full-stack applications aimed at identifying control breaks and 
+    automating risk remediation at the firm's infrastructure level.`,
+    `Built internal, client-facing portal in ReactJS that serves as a
+    hub for the team's applications and services.`,
+    `Utilized JFrog Artifactory to reorganize common back-end functionality
+    across different applications into a common Python package. This led to 
+    reduced code duplication and allowed team to maintain up-to-date, now 
+    versioned internal tooling.`,
+    `Led effort to transition team's workflow from waterfall to an
+    agile-first, Scrum model.`,
+    `Set up and helped maintain team Scrum board in Jira, SharePoint and 
+    Confluence pages,`,
+  ];
+
+  return (
+    <Row>
+      <Col>
+        <Row>
+          <Col>
+            <h4>Experiences</h4>
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-between my-0">
+          <Col xs={8}>
+            <p className="my-0">
+              <strong>{role}</strong>
+            </p>
+            <small>
+              <strong>{organization}</strong>, {location}
+            </small>
+            <ul>
+              {bulletPoints.map((bulletPoint) => (
+                <li>{bulletPoint}</li>
+              ))}
+            </ul>
+          </Col>
+          <Col xs={4} style={{ textAlign: "right" }}>
+            <span>{dates}</span>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+  );
+};
+
 const Profile = (props) => {
   // Set up dummy data for each section
   const skills = {
@@ -205,6 +306,17 @@ const Profile = (props) => {
       { skill: "Cloud Foundry", progress: 30 },
       { skill: "Tableau", progress: 30 },
       { skill: "SQL", progress: 30 },
+      { skill: "Java", progress: 40 },
+    ],
+    languageSkills: [
+      {
+        language: "Arabic",
+        notes: "Conversational in Levantine dialect. Basic literacy.",
+      },
+      {
+        language: "German",
+        notes: "B1 level. Basic conversation, intermediate literacy.",
+      },
     ],
     additionalSkills: [
       "Scrum",
@@ -237,6 +349,8 @@ const Profile = (props) => {
       <EducationSection {...institution} />
       <br />
       <Skills {...skills} />
+      <br />
+      <Experiences />
     </Container>
   );
 };

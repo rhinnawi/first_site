@@ -19,15 +19,15 @@ function Sidebar(props) {
       </Offcanvas.Header>
       <Offcanvas.Body>
         <Nav className="justify-content-end flex-grow-1 pe-3">
-          <Nav.Link>
+          <Item>
             <Link to="/">Home</Link>
-          </Nav.Link>
-          <Nav.Link>
+          </Item>
+          <Item>
             <Link to="/about">About Us</Link>
-          </Nav.Link>
-          <Nav.Link>
+          </Item>
+          <Item>
             <Link to="/stack">Our Stack</Link>
-          </Nav.Link>
+          </Item>
           <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
             <Item href="#action3">Action</Item>
             <Item href="#action4">Another action</Item>
