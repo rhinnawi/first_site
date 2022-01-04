@@ -50,6 +50,73 @@ const EducationSection = ({ name, gradYear, degrees, minors }) => {
   );
 };
 
+const SkillCards = ({
+  category,
+  skills,
+  cardColor,
+  cardWidth,
+  maxCardWidth,
+}) => {
+  return (
+    <CardGroup className="d-flex flex-wrap">
+      <Row style={{ width: "100%" }}>
+        <Col
+          style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+          className="skill-card-col p-0"
+        >
+          <Card
+            className="d-flex justify-content-center skill-card"
+            style={{
+              color: cardColor,
+              height: "100%",
+              textAlign: "center",
+              borderColor: cardColor,
+            }}
+          >
+            <span>{category}</span>
+          </Card>
+        </Col>
+        {skills.map((item) => {
+          return (
+            <Col
+              key={item.skill}
+              style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+              className="p-0 m-0 skill-card-col"
+            >
+              <Card
+                className="skill-card"
+                style={{
+                  backgroundColor: cardColor,
+                }}
+              >
+                <Card.Body className="p-2">
+                  <Card.Text className="py-0 my-1">
+                    <span>
+                      <strong>{item.skill}</strong>
+                    </span>
+                  </Card.Text>
+                  {category === "Language Skills" ? (
+                    <Card.Text>
+                      <small>{item.notes}</small>
+                    </Card.Text>
+                  ) : null}
+                  {category === "Technical Skills" ? (
+                    <ProgressBar
+                      now={item.progress}
+                      variant={"progress-bar"}
+                      striped
+                    />
+                  ) : null}
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
+      </Row>
+    </CardGroup>
+  );
+};
+
 /* 
 This component creates a profile that showcases technical and general 
 'additional' skills. They are outputted as cards with the card size depending
@@ -62,7 +129,7 @@ languageSkills - Array of Objects with properties:
   language (string), notes (string)
 additionalSkills - Array of strings
 */
-const Skills = (props) => {
+const SkillSection = (props) => {
   let technicalSkills = props.technicalSkills;
   let languageSkills = props.languageSkills;
   let additionalSkills = props.additionalSkills;
@@ -92,153 +159,40 @@ const Skills = (props) => {
       skillNameLength > longestSkillName ? skillNameLength : longestSkillName;
   });
 
-  let cardWidth = `${longestSkillName * 0.6}rem`;
-  let maxCardWidth = `${(longestSkillName + 1) * 0.6}rem`;
+  let cardWidth = `${longestSkillName * 0.7}rem`;
+  let maxCardWidth = `${(longestSkillName + 1) * 0.7}rem`;
 
   return (
     <Row>
       <Col style={{ width: "100%" }}>
         <h4>Skills</h4>
-        <CardGroup className="d-flex flex-wrap">
-          <Row style={{ width: "100%" }}>
-            <Col
-              style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-              className="skill-card-col p-0"
-            >
-              <Card
-                className="d-flex justify-content-center skill-card"
-                style={{
-                  color: "red",
-                  height: "100%",
-                  textAlign: "center",
-                  borderColor: "red",
-                }}
-              >
-                <span>Technical Skills</span>
-              </Card>
-            </Col>
-            {technicalSkills.map(({ skill, progress }) => {
-              return (
-                <Col
-                  key={skill}
-                  style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-                  className="p-0 m-0 skill-card-col"
-                >
-                  <Card
-                    className="skill-card"
-                    style={{
-                      backgroundColor: "red",
-                    }}
-                  >
-                    <Card.Body className="p-2">
-                      <Card.Text className="py-0 my-1">
-                        <span>{skill}</span>
-                      </Card.Text>
-                      <ProgressBar
-                        now={progress}
-                        variant={"progress-bar"}
-                        animated
-                      />
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
-          </Row>
-        </CardGroup>
+        <SkillCards
+          category="Technical Skills"
+          skills={technicalSkills}
+          cardColor="blue"
+          cardWidth={cardWidth}
+          maxCardWidth={maxCardWidth}
+        />
+
         <br />
-        <CardGroup
-          className="d-flex flex-wrap"
-          style={{ maxHeight: "fit-content" }}
-        >
-          <Row style={{ width: "100%" }}>
-            <Col
-              style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-              className="skill-card-col p-0"
-            >
-              <Card
-                className="d-flex justify-content-center skill-card"
-                style={{
-                  color: "blue",
-                  height: "100%",
-                  textAlign: "center",
-                  borderColor: "blue",
-                }}
-              >
-                <span>Language Skills</span>
-              </Card>
-            </Col>
-            {languageSkills.map(({ language, notes }) => {
-              return (
-                <Col
-                  key={language}
-                  style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-                  className="p-0 m-0 skill-card-col"
-                >
-                  <Card
-                    className="skill-card"
-                    style={{
-                      backgroundColor: "blue",
-                    }}
-                  >
-                    <Card.Body className="p-2">
-                      <Card.Text className="py-0 my-1">
-                        <span>{language}</span>
-                        <small>{notes}</small>
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
-          </Row>
-        </CardGroup>
+
+        <SkillCards
+          category="Language Skills"
+          skills={languageSkills}
+          cardColor="teal"
+          cardWidth={cardWidth}
+          maxCardWidth={maxCardWidth}
+        />
+
         <br />
-        <CardGroup
-          className="d-flex flex-wrap"
-          style={{ maxHeight: "fit-content" }}
-        >
-          <Row style={{ width: "100%" }}>
-            <Col
-              style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-              className="skill-card-col p-0"
-            >
-              <Card
-                className="d-flex justify-content-center skill-card"
-                style={{
-                  color: "blue",
-                  height: "100%",
-                  textAlign: "center",
-                  borderColor: "blue",
-                }}
-              >
-                <span>Additional Skills</span>
-              </Card>
-            </Col>
-            {additionalSkills.map((skill) => {
-              return (
-                <Col
-                  key={skill}
-                  style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-                  className="p-0 m-0 skill-card-col"
-                >
-                  <Card
-                    className="skill-card"
-                    style={{
-                      backgroundColor: "blue",
-                    }}
-                  >
-                    <Card.Body className="p-2">
-                      <Card.Text className="py-0 my-1">
-                        <span>{skill}</span>
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              );
-            })}
-          </Row>
-        </CardGroup>
+
+        <SkillCards
+          category="Additional Skills"
+          skills={additionalSkills}
+          cardColor="green"
+          cardWidth={cardWidth}
+          maxCardWidth={maxCardWidth}
+        />
       </Col>
     </Row>
   );
@@ -282,7 +236,9 @@ const Experiences = (props) => {
             </small>
             <ul>
               {bulletPoints.map((bulletPoint) => (
-                <li>{bulletPoint}</li>
+                <li key={bulletPoint.length + bulletPoint.substring(1, 10)}>
+                  {bulletPoint}
+                </li>
               ))}
             </ul>
           </Col>
@@ -310,20 +266,20 @@ const Profile = (props) => {
     ],
     languageSkills: [
       {
-        language: "Arabic",
+        skill: "Arabic",
         notes: "Conversational in Levantine dialect. Basic literacy.",
       },
       {
-        language: "German",
+        skill: "German",
         notes: "B1 level. Basic conversation, intermediate literacy.",
       },
     ],
     additionalSkills: [
-      "Scrum",
-      "Teaching / tutoring",
-      "Jira",
-      "Confluence",
-      "SharePoint",
+      { skill: "Scrum" },
+      { skill: "Teaching / tutoring" },
+      { skill: "Jira" },
+      { skill: "Confluence" },
+      { skill: "SharePoint" },
     ],
   };
 
@@ -348,7 +304,7 @@ const Profile = (props) => {
       <hr />
       <EducationSection {...institution} />
       <br />
-      <Skills {...skills} />
+      <SkillSection {...skills} />
       <br />
       <Experiences />
     </Container>

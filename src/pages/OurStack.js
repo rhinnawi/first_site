@@ -44,12 +44,12 @@ const OurStack = (props) => {
   `;
 
   const futureTools = [
-    { tool: "TypeScript", desc: "Stricter typing in JavaScript" },
-    { tool: "SASS", desc: "Enhanced styling functionality" },
-    { tool: "Node.js", desc: "Backend functions, REST API" },
+    { tool: "TypeScript", description: "Stricter typing in JavaScript" },
+    { tool: "SASS", description: "Enhanced styling functionality" },
+    { tool: "Node.js", description: "Backend functions, REST API" },
     {
       tool: "AWS S3, Lambda, API Gateway",
-      desc: "Host API, store back-end functions, store images",
+      description: "Host API, store back-end functions, store images",
     },
   ];
 
@@ -64,9 +64,11 @@ const OurStack = (props) => {
 
       <Table style={{ textAlign: "center", verticalAlign: "middle" }}>
         <thead>
-          <th width="35%"></th>
-          <th>Tool</th>
-          <th>Purpose</th>
+          <tr>
+            <th width="35%"></th>
+            <th>Tool</th>
+            <th>Purpose</th>
+          </tr>
         </thead>
         <tbody>
           {stack.map(({ icon, tool, purpose }) => {
@@ -90,9 +92,9 @@ const OurStack = (props) => {
         <h3>Future tooling considerations</h3>
         <p>{futureToolsBlurb}</p>
         <ul>
-          {futureTools.map(({ tool, desc }) => (
-            <li>
-              <strong>{tool}</strong>: {desc}
+          {futureTools.map(({ tool, description }) => (
+            <li key={tool}>
+              <strong>{tool}</strong>: {description}
             </li>
           ))}
         </ul>
