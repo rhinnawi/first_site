@@ -1,13 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardGroup,
-  ProgressBar,
-} from "react-bootstrap";
+import { Container, Row, Col, Card, CardGroup } from "react-bootstrap";
 
 /*
 Profile section that outputs formatted educational information. Itms are split
@@ -40,7 +33,8 @@ const EducationSection = ({ name, gradYear, degrees, minors }) => {
           <Row>
             <Col>
               <small>
-                {degrees.join(", ")}. Minors: {minors.join(", ")}
+                {degrees.join(", ")}. <strong>Minors:</strong>{" "}
+                {minors.join(", ")}
               </small>
             </Col>
           </Row>
@@ -91,21 +85,12 @@ const SkillCards = ({
               >
                 <Card.Body className="p-2">
                   <Card.Text className="py-0 my-1">
-                    <span>
-                      <strong>{item.skill}</strong>
-                    </span>
+                    <strong>{item.skill}</strong>
                   </Card.Text>
-                  {category === "Language Skills" ? (
-                    <Card.Text>
-                      <small>{item.notes}</small>
+                  {category !== "Additional Skills" ? (
+                    <Card.Text style={{ fontSize: "0.8rem" }}>
+                      {item.notes}
                     </Card.Text>
-                  ) : null}
-                  {category === "Technical Skills" ? (
-                    <ProgressBar
-                      now={item.progress}
-                      variant={"progress-bar"}
-                      striped
-                    />
                   ) : null}
                 </Card.Body>
               </Card>
@@ -135,12 +120,31 @@ const SkillSection = (props) => {
   let additionalSkills = props.additionalSkills;
 
   /* 
-  Order technical skills from most to least progress 
+  Order technical skills from highest to lowest proficiency level. If same 
+  level, sort alphabetically.
   Reference: https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/ 
   */
-  technicalSkills.sort((skillA, skillB) =>
-    skillA.progress > skillB.progress ? -1 : 1
-  );
+  technicalSkills.sort((skillA, skillB) => {
+    const tiers = {
+      Basic: 1,
+      Intermediate: 2,
+      Advanced: 3,
+      Expert: 4,
+    };
+
+    let itemA = Object.keys(tiers).includes(skillA.notes)
+      ? tiers[skillA.notes]
+      : 0;
+    let itemB = Object.keys(tiers).includes(skillB.notes)
+      ? tiers[skillB.notes]
+      : 0;
+
+    if (itemA === itemB) {
+      return skillA.skill < skillB.skill ? -1 : 1;
+    }
+
+    return itemA > itemB ? -1 : 1;
+  });
 
   /* 
   Get card width and max card width based off length of string for the skill 
@@ -163,38 +167,44 @@ const SkillSection = (props) => {
   let maxCardWidth = `${(longestSkillName + 1) * 0.7}rem`;
 
   return (
-    <Row>
-      <Col style={{ width: "100%" }}>
-        <h4>Skills</h4>
-        <SkillCards
-          category="Technical Skills"
-          skills={technicalSkills}
-          cardColor="blue"
-          cardWidth={cardWidth}
-          maxCardWidth={maxCardWidth}
-        />
+    <div>
+      <Row>
+        <Col>
+          <h4>Skills</h4>
+        </Col>
+      </Row>
+      <Row>
+        <Col style={{ width: "100%" }}>
+          <SkillCards
+            category="Technical Skills"
+            skills={technicalSkills}
+            cardColor="blue"
+            cardWidth={cardWidth}
+            maxCardWidth={maxCardWidth}
+          />
 
-        <br />
+          <br />
 
-        <SkillCards
-          category="Language Skills"
-          skills={languageSkills}
-          cardColor="teal"
-          cardWidth={cardWidth}
-          maxCardWidth={maxCardWidth}
-        />
+          <SkillCards
+            category="Language Skills"
+            skills={languageSkills}
+            cardColor="teal"
+            cardWidth={cardWidth}
+            maxCardWidth={maxCardWidth}
+          />
 
-        <br />
+          <br />
 
-        <SkillCards
-          category="Additional Skills"
-          skills={additionalSkills}
-          cardColor="green"
-          cardWidth={cardWidth}
-          maxCardWidth={maxCardWidth}
-        />
-      </Col>
-    </Row>
+          <SkillCards
+            category="Additional Skills"
+            skills={additionalSkills}
+            cardColor="green"
+            cardWidth={cardWidth}
+            maxCardWidth={maxCardWidth}
+          />
+        </Col>
+      </Row>
+    </div>
   );
 };
 
@@ -255,14 +265,14 @@ const Profile = (props) => {
   // Set up dummy data for each section
   const skills = {
     technicalSkills: [
-      { skill: "Python", progress: 80 },
-      { skill: "JavaScript (ES6)", progress: 60 },
-      { skill: "ReactJS", progress: 50 },
-      { skill: "HTML & CSS", progress: 70 },
-      { skill: "Cloud Foundry", progress: 30 },
-      { skill: "Tableau", progress: 30 },
-      { skill: "SQL", progress: 30 },
-      { skill: "Java", progress: 40 },
+      { skill: "Python", notes: "Advanced" },
+      { skill: "JavaScript (ES6)", notes: "Intermediate" },
+      { skill: "ReactJS", notes: "Intermediate" },
+      { skill: "HTML & CSS", notes: "Intermediate" },
+      { skill: "Cloud Foundry", notes: "Basic" },
+      { skill: "Tableau", notes: "Basic" },
+      { skill: "SQL", notes: "Basic" },
+      { skill: "Java", notes: "Intermediate" },
     ],
     languageSkills: [
       {
