@@ -1,6 +1,13 @@
 import React from "react";
 import "../styles/App.css";
-import { Container, Row, Col, Card, CardGroup } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardGroup,
+  Accordion,
+} from "react-bootstrap";
 
 /*
 Profile section that outputs formatted educational information. Itms are split
@@ -14,36 +21,42 @@ minors (array of strings)
 */
 const EducationSection = ({ name, gradYear, degrees, minors }) => {
   return (
-    <div>
-      <Row>
-        <Col>
-          <h4>Education</h4>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Row className="d-flex justify-content-between my-0">
-            <Col xs={8}>
-              <span>{name}</span>
-            </Col>
-            <Col xs={4} style={{ textAlign: "right" }}>
-              <span>{gradYear}</span>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <small>
-                {degrees.join(", ")}. <strong>Minors:</strong>{" "}
-                {minors.join(", ")}
-              </small>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </div>
+    <Row>
+      <Col>
+        <Row className="d-flex justify-content-between my-0">
+          <Col xs={8}>
+            <span>{name}</span>
+          </Col>
+          <Col xs={4} style={{ textAlign: "right" }}>
+            <span>{gradYear}</span>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <small>
+              {degrees.join(", ")}.{" "}
+              <span style={{ fontWeight: "600" }}>Minors:</span>{" "}
+              {minors.join(", ")}
+            </small>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 };
 
+/* 
+Component that creates a skill card section. This is used for the Skills 
+section below to create each of the subsections for skill types.
+
+Expected prop:
+Object with the following properties:
+  category (string)
+  skills (Object[skills, notes])
+  cardColor (string)
+  cardWidth (string in format '[number]rem')
+  maxCardWidth (string in format '[number]rem')
+*/
 const SkillCards = ({
   category,
   skills,
@@ -53,66 +66,65 @@ const SkillCards = ({
 }) => {
   return (
     <CardGroup className="d-flex flex-wrap">
-      <Row style={{ width: "100%" }}>
-        <Col
-          style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-          className="skill-card-col p-0"
+      <Col
+        style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+        className="skill-card-col p-0"
+      >
+        <Card
+          className="d-flex justify-content-center skill-card"
+          style={{
+            color: cardColor,
+            height: "100%",
+            textAlign: "center",
+            borderColor: cardColor,
+          }}
         >
-          <Card
-            className="d-flex justify-content-center skill-card"
-            style={{
-              color: cardColor,
-              height: "100%",
-              textAlign: "center",
-              borderColor: cardColor,
-            }}
+          <span>{category}</span>
+        </Card>
+      </Col>
+      {skills.map((item) => {
+        return (
+          <Col
+            key={item.skill}
+            style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+            className="p-0 m-0 skill-card-col"
           >
-            <span>{category}</span>
-          </Card>
-        </Col>
-        {skills.map((item) => {
-          return (
-            <Col
-              key={item.skill}
-              style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-              className="p-0 m-0 skill-card-col"
+            <Card
+              className="skill-card"
+              style={{
+                backgroundColor: cardColor,
+              }}
             >
-              <Card
-                className="skill-card"
-                style={{
-                  backgroundColor: cardColor,
-                }}
-              >
-                <Card.Body className="p-2">
-                  <Card.Text className="py-0 my-1">
-                    <strong>{item.skill}</strong>
+              <Card.Body className="p-1">
+                <Card.Text className="py-0 my-1">
+                  <strong>{item.skill}</strong>
+                </Card.Text>
+                {category !== "Additional Skills" ? (
+                  <Card.Text style={{ fontSize: "0.8rem", fontWeight: "500" }}>
+                    {item.notes}
                   </Card.Text>
-                  {category !== "Additional Skills" ? (
-                    <Card.Text style={{ fontSize: "0.8rem" }}>
-                      {item.notes}
-                    </Card.Text>
-                  ) : null}
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
+                ) : null}
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      })}
     </CardGroup>
   );
 };
 
 /* 
-This component creates a profile that showcases technical and general 
+This component creates a profile that showcases technical, language, and 
 'additional' skills. They are outputted as cards with the card size depending
 upon the length of the skill with the longest name.
 
 Expected props:
 technicalSkills - Array of Objects with properties: 
-  skill (string), progress (number)
+  skill (string), notes (string)
 languageSkills - Array of Objects with properties:
-  language (string), notes (string)
-additionalSkills - Array of strings
+  skill (string), notes (string)
+additionalSkills - Array of Objects with properties:
+  skill (string)
 */
 const SkillSection = (props) => {
   let technicalSkills = props.technicalSkills;
@@ -236,7 +248,7 @@ const Experiences = (props) => {
             <h4>Experiences</h4>
           </Col>
         </Row>
-        <Row className="d-flex justify-content-between my-0">
+        <Row>
           <Col xs={8}>
             <p className="my-0">
               <strong>{role}</strong>
@@ -244,16 +256,20 @@ const Experiences = (props) => {
             <small>
               <strong>{organization}</strong>, {location}
             </small>
-            <ul>
+          </Col>
+          <Col xs={4} style={{ textAlign: "right" }}>
+            <span>{dates}</span>
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-between my-0">
+          <Col>
+            <ul className="py-1 px-2">
               {bulletPoints.map((bulletPoint) => (
                 <li key={bulletPoint.length + bulletPoint.substring(1, 10)}>
                   {bulletPoint}
                 </li>
               ))}
             </ul>
-          </Col>
-          <Col xs={4} style={{ textAlign: "right" }}>
-            <span>{dates}</span>
           </Col>
         </Row>
       </Col>
@@ -285,11 +301,11 @@ const Profile = (props) => {
       },
     ],
     additionalSkills: [
-      { skill: "Scrum" },
-      { skill: "Teaching / tutoring" },
-      { skill: "Jira" },
-      { skill: "Confluence" },
-      { skill: "SharePoint" },
+      { skill: "Scrum", notes: "" },
+      { skill: "Teaching / tutoring", notes: "" },
+      { skill: "Jira", notes: "" },
+      { skill: "Confluence", notes: "" },
+      { skill: "SharePoint", notes: "" },
     ],
   };
 
@@ -311,8 +327,15 @@ const Profile = (props) => {
           <h2>{props.name}</h2>
         </Col>
       </Row>
+      <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>Education Section</Accordion.Header>
+          <Accordion.Body>
+            <EducationSection {...institution} />
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
       <hr />
-      <EducationSection {...institution} />
       <br />
       <SkillSection {...skills} />
       <br />

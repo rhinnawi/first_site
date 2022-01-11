@@ -7,7 +7,9 @@ body {
 
 main {
   display: flex;
-  min-height: 100vh;
+  min-height: 80vh;
+  max-height: 95vh;
+  overflow-y: scroll;
   margin: 10px auto;
   max-width: 100%;
   font-size: calc(10px + 1vmin);
@@ -61,7 +63,7 @@ main {
 #AboutPageNav {
   /* min-height: 80vh; */
   height: 100%;
-  /* max-height: 89vh; */
+  max-height: 90vh;
   max-width: 100% !important;
   border-top: solid 1px grey;
   border-left: solid 1px grey;
@@ -70,8 +72,8 @@ main {
 
 .content {
   min-height: 100%;
-  max-height: 88vh;
-  overflow-y: scroll;
+  /* max-height: 88vh;
+  overflow-y: scroll; */
   max-width: 100%;
   border-top: solid 1px grey;
   padding: 1rem;
@@ -195,6 +197,7 @@ main {
 
   .content {
     border: 0;
+    max-height: 100%;
   }
 
   .skill-card-col {
