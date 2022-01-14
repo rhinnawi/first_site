@@ -179,44 +179,37 @@ const SkillSection = (props) => {
   let maxCardWidth = `${(longestSkillName + 1) * 0.7}rem`;
 
   return (
-    <div>
-      <Row>
-        <Col>
-          <h4>Skills</h4>
-        </Col>
-      </Row>
-      <Row>
-        <Col style={{ width: "100%" }}>
-          <SkillCards
-            category="Technical Skills"
-            skills={technicalSkills}
-            cardColor="blue"
-            cardWidth={cardWidth}
-            maxCardWidth={maxCardWidth}
-          />
+    <Row>
+      <Col style={{ width: "100%" }}>
+        <SkillCards
+          category="Technical Skills"
+          skills={technicalSkills}
+          cardColor="blue"
+          cardWidth={cardWidth}
+          maxCardWidth={maxCardWidth}
+        />
 
-          <br />
+        <br />
 
-          <SkillCards
-            category="Language Skills"
-            skills={languageSkills}
-            cardColor="teal"
-            cardWidth={cardWidth}
-            maxCardWidth={maxCardWidth}
-          />
+        <SkillCards
+          category="Language Skills"
+          skills={languageSkills}
+          cardColor="teal"
+          cardWidth={cardWidth}
+          maxCardWidth={maxCardWidth}
+        />
 
-          <br />
+        <br />
 
-          <SkillCards
-            category="Additional Skills"
-            skills={additionalSkills}
-            cardColor="green"
-            cardWidth={cardWidth}
-            maxCardWidth={maxCardWidth}
-          />
-        </Col>
-      </Row>
-    </div>
+        <SkillCards
+          category="Additional Skills"
+          skills={additionalSkills}
+          cardColor="green"
+          cardWidth={cardWidth}
+          maxCardWidth={maxCardWidth}
+        />
+      </Col>
+    </Row>
   );
 };
 
@@ -243,11 +236,6 @@ const Experiences = (props) => {
   return (
     <Row>
       <Col>
-        <Row>
-          <Col>
-            <h4>Experiences</h4>
-          </Col>
-        </Row>
         <Row>
           <Col xs={8}>
             <p className="my-0">
@@ -316,30 +304,38 @@ const Profile = (props) => {
     minors: ["Astronomy & Astrophysics", "German"],
   };
 
+  const sections = [
+    { title: "Education", component: <EducationSection {...institution} /> },
+    { title: "Skills", component: <SkillSection {...skills} /> },
+    { title: "Experience", component: <Experiences /> },
+  ];
   /* 
   Put together profile by passing data into each section and combining it into 
   a resume-style profile page
   */
   return (
-    <Container fluid className="profile py-2">
+    <Container fluid className="profile py-2 px-auto">
       <Row>
         <Col>
           <h2>{props.name}</h2>
         </Col>
       </Row>
-      <Accordion>
-        <Accordion.Item eventKey="0">
-          <Accordion.Header>Education Section</Accordion.Header>
-          <Accordion.Body>
-            <EducationSection {...institution} />
-          </Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
-      <hr />
-      <br />
-      <SkillSection {...skills} />
-      <br />
-      <Experiences />
+      {sections.map(({ title, component }) => {
+        return (
+          <Row key={title}>
+            <Col className="mx-0 px-0">
+              <Accordion defaultActiveKey={title}>
+                <Accordion.Item eventKey={title}>
+                  <Accordion.Header>
+                    <h4>{title}</h4>
+                  </Accordion.Header>
+                  <Accordion.Body>{component}</Accordion.Body>
+                </Accordion.Item>
+              </Accordion>
+            </Col>
+          </Row>
+        );
+      })}
     </Container>
   );
 };

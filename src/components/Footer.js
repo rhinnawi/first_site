@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 function Footer(props) {
   return (
-    <footer id="Footer">
-      <Container fluid>
+    <footer>
+      <Container fluid id="Footer">
         <Row className="justify-contents-left align-items-center">
           <Col>
             <Link to="/">

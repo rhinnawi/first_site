@@ -67,7 +67,7 @@ function HomePage(props) {
 
             <Row>
               <Col className="px-0 mx-0">
-                <Card className="description-card">
+                <Card sm={6} className="description-card">
                   <Card.Title>
                     <strong>About Rani</strong>
                   </Card.Title>
@@ -77,7 +77,7 @@ function HomePage(props) {
                   </Card.Body>
                 </Card>
               </Col>
-              <Col>
+              <Col sm={6} className="px-0 mx-0">
                 <Card className="description-card">
                   <Card.Title>
                     <strong>About Matt</strong>
