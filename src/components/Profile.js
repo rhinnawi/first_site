@@ -77,6 +77,7 @@ const SkillCards = ({
             height: "100%",
             textAlign: "center",
             borderColor: cardColor,
+            fontSize: "1.25rem",
           }}
         >
           <span>{category}</span>
@@ -96,11 +97,14 @@ const SkillCards = ({
               }}
             >
               <Card.Body className="p-1">
-                <Card.Text className="py-0 my-1">
-                  <strong>{item.skill}</strong>
+                <Card.Text
+                  className="py-0 my-1"
+                  style={{ fontWeight: "600", fontSize: "1.25rem" }}
+                >
+                  {item.skill}
                 </Card.Text>
                 {category !== "Additional Skills" ? (
-                  <Card.Text style={{ fontSize: "0.8rem", fontWeight: "500" }}>
+                  <Card.Text style={{ fontSize: "0.9rem", fontWeight: "500" }}>
                     {item.notes}
                   </Card.Text>
                 ) : null}
@@ -175,8 +179,8 @@ const SkillSection = (props) => {
       skillNameLength > longestSkillName ? skillNameLength : longestSkillName;
   });
 
-  let cardWidth = `${longestSkillName * 0.7}rem`;
-  let maxCardWidth = `${(longestSkillName + 1) * 0.7}rem`;
+  let cardWidth = `${longestSkillName * 0.75}rem`;
+  let maxCardWidth = `${(longestSkillName + 1) * 0.75}rem`;
 
   return (
     <Row>
