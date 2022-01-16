@@ -217,26 +217,7 @@ const SkillSection = (props) => {
   );
 };
 
-const Experiences = (props) => {
-  const role = "Full-Stack Software Developer";
-  const dates = "July 2020 - Present";
-  const organization = "JPMorgan Chase";
-  const location = "Columbus, OH";
-  const bulletPoints = [
-    `Developed full-stack applications aimed at identifying control breaks and 
-    automating risk remediation at the firm's infrastructure level.`,
-    `Built internal, client-facing portal in ReactJS that serves as a
-    hub for the team's applications and services.`,
-    `Utilized JFrog Artifactory to reorganize common back-end functionality
-    across different applications into a common Python package. This led to 
-    reduced code duplication and allowed team to maintain up-to-date, now 
-    versioned internal tooling.`,
-    `Led effort to transition team's workflow from waterfall to an
-    agile-first, Scrum model.`,
-    `Set up and helped maintain team Scrum board in Jira, SharePoint and 
-    Confluence pages,`,
-  ];
-
+const Experience = ({ role, dates, organization, location, bulletPoints }) => {
   return (
     <Row>
       <Col>
@@ -255,7 +236,7 @@ const Experiences = (props) => {
         </Row>
         <Row className="d-flex justify-content-between my-0">
           <Col>
-            <ul className="py-1 px-2">
+            <ul className="py-1 px-0 mx-3">
               {bulletPoints.map((bulletPoint) => (
                 <li key={bulletPoint.length + bulletPoint.substring(1, 10)}>
                   {bulletPoint}
@@ -264,6 +245,18 @@ const Experiences = (props) => {
             </ul>
           </Col>
         </Row>
+      </Col>
+    </Row>
+  );
+};
+
+const ExperienceSection = ({ experiences }) => {
+  return (
+    <Row>
+      <Col>
+        {experiences.map((exp) => (
+          <Experience {...exp} />
+        ))}
       </Col>
     </Row>
   );
@@ -308,10 +301,51 @@ const Profile = (props) => {
     minors: ["Astronomy & Astrophysics", "German"],
   };
 
+  const experiences = [
+    {
+      role: "Full-Stack Software Developer",
+      dates: "July 2020 - Present",
+      organization: "JPMorgan Chase",
+      location: "Columbus, OH",
+      bulletPoints: [
+        `Developed full-stack applications aimed at identifying control breaks and 
+    automating risk remediation at the firm's infrastructure level.`,
+        `Built internal, client-facing portal in ReactJS that serves as a
+    hub for the team's applications and services.`,
+        `Utilized JFrog Artifactory to reorganize common back-end functionality
+    across different applications into a common Python package. This led to 
+    reduced code duplication and allowed team to maintain up-to-date, now 
+    versioned internal tooling.`,
+        `Led effort to transition team's workflow from waterfall to an
+    agile-first, Scrum model.`,
+        `Set up and helped maintain team Scrum board in Jira, SharePoint and 
+    Confluence pages,`,
+      ],
+    },
+    {
+      role: "Astronomy Teaching Assistant",
+      dates: "August 2017 - December 2019",
+      organization: "Ohio State University Department of Astronomy",
+      location: "Columbus, OH",
+      bulletPoints: [
+        `Lectured and graded for an introductory astronomy lab section of 
+      about 30 students.`,
+        `Evolved teaching skills by learning to simplify complicated concepts 
+      in astronomy for non-majors in general education courses.`,
+        `Held semi-weekly office hours to offer additional assistance for 
+      students in all six course sections.`,
+        `Tutored students outside of lectures and office hours.`,
+      ],
+    },
+  ];
+
   const sections = [
     { title: "Education", component: <EducationSection {...institution} /> },
     { title: "Skills", component: <SkillSection {...skills} /> },
-    { title: "Experience", component: <Experiences /> },
+    {
+      title: "Experience",
+      component: <ExperienceSection experiences={experiences} />,
+    },
   ];
   /* 
   Put together profile by passing data into each section and combining it into 
