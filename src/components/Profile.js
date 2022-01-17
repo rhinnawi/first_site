@@ -66,53 +66,61 @@ const SkillCards = ({
 }) => {
   return (
     <CardGroup className="d-flex flex-wrap">
-      <Col
-        style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-        className="skill-card-col p-0"
-      >
-        <Card
-          className="d-flex justify-content-center skill-card"
-          style={{
-            color: cardColor,
-            height: "100%",
-            textAlign: "center",
-            borderColor: cardColor,
-            fontSize: "1.25rem",
-          }}
+      <Row style={{ width: "100%" }}>
+        <Col
+          style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+          className="skill-card-col p-0"
         >
-          <span>{category}</span>
-        </Card>
-      </Col>
-      {skills.map((item) => {
-        return (
-          <Col
-            key={item.skill}
-            style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
-            className="p-0 m-0 skill-card-col"
+          <Card
+            className="d-flex justify-content-center skill-card"
+            style={{
+              color: cardColor,
+              height: "100%",
+              textAlign: "center",
+              borderColor: cardColor,
+              fontSize: "1.25rem",
+            }}
           >
-            <Card
-              className="skill-card"
-              style={{
-                backgroundColor: cardColor,
-              }}
-            >
-              <Card.Body className="p-1">
-                <Card.Text
-                  className="py-0 my-1"
-                  style={{ fontWeight: "600", fontSize: "1.25rem" }}
+            <span>{category}</span>
+          </Card>
+        </Col>
+        <Col>
+          <Row>
+            {skills.map((item) => {
+              return (
+                <Col
+                  key={item.skill}
+                  style={{ minWidth: cardWidth, maxWidth: maxCardWidth }}
+                  className="p-0 m-0 skill-card-col"
                 >
-                  {item.skill}
-                </Card.Text>
-                {category !== "Additional Skills" ? (
-                  <Card.Text style={{ fontSize: "0.9rem", fontWeight: "500" }}>
-                    {item.notes}
-                  </Card.Text>
-                ) : null}
-              </Card.Body>
-            </Card>
-          </Col>
-        );
-      })}
+                  <Card
+                    className="skill-card"
+                    style={{
+                      backgroundColor: cardColor,
+                    }}
+                  >
+                    <Card.Body className="p-1">
+                      <Card.Text
+                        className="py-0 my-1"
+                        style={{ fontWeight: "600", fontSize: "1.25rem" }}
+                      >
+                        {item.skill}
+                      </Card.Text>
+                      {category !== "Additional Skills" ? (
+                        <Card.Text
+                          style={{ fontSize: "0.9rem", fontWeight: "500" }}
+                        >
+                          {item.notes}
+                        </Card.Text>
+                      ) : null}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </Col>
+      </Row>
     </CardGroup>
   );
 };
@@ -180,13 +188,13 @@ const SkillSection = (props) => {
   });
 
   let cardWidth = `${longestSkillName * 0.75}rem`;
-  let maxCardWidth = `${(longestSkillName + 1) * 0.75}rem`;
+  let maxCardWidth = `${(longestSkillName + 0.25) * 0.75}rem`;
 
   return (
     <Row>
       <Col style={{ width: "100%" }}>
         <SkillCards
-          category="Technical Skills"
+          category="Technical"
           skills={technicalSkills}
           cardColor="blue"
           cardWidth={cardWidth}
@@ -196,7 +204,7 @@ const SkillSection = (props) => {
         <br />
 
         <SkillCards
-          category="Language Skills"
+          category="Language"
           skills={languageSkills}
           cardColor="teal"
           cardWidth={cardWidth}
@@ -206,7 +214,7 @@ const SkillSection = (props) => {
         <br />
 
         <SkillCards
-          category="Additional Skills"
+          category="Additional"
           skills={additionalSkills}
           cardColor="green"
           cardWidth={cardWidth}
@@ -217,6 +225,17 @@ const SkillSection = (props) => {
   );
 };
 
+/* 
+Takes in an object with the properties described below and generates a section 
+for a single experience.
+
+Expected properties:
+  role - String
+  dates - String 
+  organization - String
+  location - String
+  bulletPoints - Array of Strings
+*/
 const Experience = ({ role, dates, organization, location, bulletPoints }) => {
   return (
     <Row>
@@ -250,6 +269,14 @@ const Experience = ({ role, dates, organization, location, bulletPoints }) => {
   );
 };
 
+/* 
+Simple component for taking in array of experiences as a prop and outputting
+them into a coherent skills section.
+
+Expected props:
+ experiences - array of Objects with properties detailed for Experience
+ component above.
+*/
 const ExperienceSection = ({ experiences }) => {
   return (
     <Row>
