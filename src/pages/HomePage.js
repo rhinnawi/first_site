@@ -58,7 +58,7 @@ function HomePage(props) {
                   <h1>Welcome to Sunbird Web</h1>
                 </Card.Header>
                 <Card.Body className="d-flex align-items-center">
-                  <Card.Text style={{ fontSize: "1.5rem" }}>
+                  <Card.Text className="main-description">
                     {aboutSunbirdWeb}
                   </Card.Text>
                 </Card.Body>
@@ -69,7 +69,7 @@ function HomePage(props) {
 
             <Row>
               <Col className="px-0 mx-0">
-                <Card sm={6}>
+                <Card sm={6} className="description-card">
                   <Card.Title>
                     <strong>About Rani</strong>
                   </Card.Title>
@@ -80,7 +80,7 @@ function HomePage(props) {
                 </Card>
               </Col>
               <Col sm={6} className="px-0 mx-0">
-                <Card>
+                <Card className="description-card">
                   <Card.Title>
                     <strong>About Matt</strong>
                   </Card.Title>
