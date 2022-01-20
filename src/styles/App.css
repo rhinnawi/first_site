@@ -14,7 +14,8 @@ main {
   margin-top: 60px;
   padding-top: auto;
   max-width: 100%;
-  font-size: calc(10px + 1vmin);
+  /* font-size: calc(10px + 1vmin); */
+  font-size: 1.15rem;
   background-color: inherit;
 }
 
@@ -70,7 +71,12 @@ footer {
   padding-left: 0;
   padding-right: 0;
   text-align: center;
-  font-size: 1em;
+  /* font-size: 1em; */
+}
+
+hr.description-card {
+  padding: 0;
+  margin: 0;
 }
 
 #AboutPage {
@@ -211,7 +217,8 @@ footer {
   }
 
   #AboutPageNav {
-    height: fit-content;
+    min-height: min-content;
+    max-height: fit-content;
     border: 0;
   }
 

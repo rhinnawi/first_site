@@ -8,6 +8,7 @@ import {
   CardGroup,
   Accordion,
 } from "react-bootstrap";
+import raniProfile from "../data/raniProfile.json";
 
 /*
 Profile section that outputs formatted educational information. Itms are split
@@ -102,7 +103,7 @@ const SkillCards = ({
                     <Card.Body className="p-1">
                       <Card.Text
                         className="py-0 my-1"
-                        style={{ fontWeight: "600", fontSize: "1.25rem" }}
+                        style={{ fontWeight: "600", fontSize: "1.15rem" }}
                       >
                         {item.skill}
                       </Card.Text>
@@ -188,7 +189,7 @@ const SkillSection = (props) => {
   });
 
   let cardWidth = `${longestSkillName * 0.75}rem`;
-  let maxCardWidth = `${(longestSkillName + 0.25) * 0.75}rem`;
+  let maxCardWidth = `${(longestSkillName + 0.15) * 0.75}rem`;
 
   return (
     <Row>
@@ -282,7 +283,7 @@ const ExperienceSection = ({ experiences }) => {
     <Row>
       <Col>
         {experiences.map((exp) => (
-          <Experience {...exp} />
+          <Experience key={exp.role} {...exp} />
         ))}
       </Col>
     </Row>
@@ -291,80 +292,9 @@ const ExperienceSection = ({ experiences }) => {
 
 const Profile = (props) => {
   // Set up dummy data for each section
-  const skills = {
-    technicalSkills: [
-      { skill: "Python", notes: "Advanced" },
-      { skill: "JavaScript (ES6)", notes: "Intermediate" },
-      { skill: "ReactJS", notes: "Intermediate" },
-      { skill: "HTML & CSS", notes: "Intermediate" },
-      { skill: "Cloud Foundry", notes: "Basic" },
-      { skill: "Tableau", notes: "Basic" },
-      { skill: "SQL", notes: "Basic" },
-      { skill: "Java", notes: "Intermediate" },
-    ],
-    languageSkills: [
-      {
-        skill: "Arabic",
-        notes: "Conversational in Levantine dialect. Basic literacy.",
-      },
-      {
-        skill: "German",
-        notes: "B1 level. Basic conversation, intermediate literacy.",
-      },
-    ],
-    additionalSkills: [
-      { skill: "Scrum", notes: "" },
-      { skill: "Teaching / tutoring", notes: "" },
-      { skill: "Jira", notes: "" },
-      { skill: "Confluence", notes: "" },
-      { skill: "SharePoint", notes: "" },
-    ],
-  };
-
-  const institution = {
-    name: "Ohio State University",
-    gradYear: 2020,
-    degrees: ["B.S. in Applied Physics"],
-    minors: ["Astronomy & Astrophysics", "German"],
-  };
-
-  const experiences = [
-    {
-      role: "Full-Stack Software Developer",
-      dates: "July 2020 - Present",
-      organization: "JPMorgan Chase",
-      location: "Columbus, OH",
-      bulletPoints: [
-        `Developed full-stack applications aimed at identifying control breaks and 
-    automating risk remediation at the firm's infrastructure level.`,
-        `Built internal, client-facing portal in ReactJS that serves as a
-    hub for the team's applications and services.`,
-        `Utilized JFrog Artifactory to reorganize common back-end functionality
-    across different applications into a common Python package. This led to 
-    reduced code duplication and allowed team to maintain up-to-date, now 
-    versioned internal tooling.`,
-        `Led effort to transition team's workflow from waterfall to an
-    agile-first, Scrum model.`,
-        `Set up and helped maintain team Scrum board in Jira, SharePoint and 
-    Confluence pages,`,
-      ],
-    },
-    {
-      role: "Astronomy Teaching Assistant",
-      dates: "August 2017 - December 2019",
-      organization: "Ohio State University Department of Astronomy",
-      location: "Columbus, OH",
-      bulletPoints: [
-        `Lectured and graded for an introductory astronomy lab section of 
-      about 30 students.`,
-        `Evolved teaching skills by learning to simplify complicated concepts 
-      in astronomy for non-majors in general education courses.`,
-        `Held semi-weekly office hours to offer additional assistance for 
-      students in all six course sections.`,
-        `Tutored students outside of lectures and office hours.`,
-      ],
-    },
-  ];
+  let skills = raniProfile.skills;
+  let experiences = raniProfile.experiences;
+  let institution = raniProfile.education.institution;
 
   const sections = [
     { title: "Education", component: <EducationSection {...institution} /> },
@@ -374,6 +304,7 @@ const Profile = (props) => {
       component: <ExperienceSection experiences={experiences} />,
     },
   ];
+
   /* 
   Put together profile by passing data into each section and combining it into 
   a resume-style profile page
