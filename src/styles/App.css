@@ -85,10 +85,15 @@ footer {
   min-height: 83vh;
   height: 100%;
   max-height: 83vh;
-  max-width: 100% !important;
+  max-width: min-content;
   border-top: solid 1px grey;
   border-left: solid 1px grey;
   border-bottom: solid 1px gainsboro;
+}
+
+#AboutPageNavColumn {
+  min-width: max-content;
+  /* max-width: max-content; */
 }
 
 .content {
@@ -214,6 +219,12 @@ footer {
     min-height: min-content;
     max-height: fit-content;
     border: 0;
+    max-width: none;
+  }
+
+  #AboutPageNavColumn {
+    min-width: 95% !important;
+    max-width: none;
   }
 
   .content {

@@ -8,7 +8,6 @@ import {
   CardGroup,
   Accordion,
 } from "react-bootstrap";
-import raniProfile from "../data/raniProfile.json";
 
 /*
 Profile section that outputs formatted educational information. Itms are split
@@ -290,12 +289,12 @@ const ExperienceSection = ({ experiences }) => {
   );
 };
 
-const Profile = (props) => {
-  // Set up dummy data for each section
-  let skills = raniProfile.skills;
-  let experiences = raniProfile.experiences;
-  let institution = raniProfile.education.institution;
-
+/* 
+  Put together profile by passing data into each section and combining it into 
+  a resume-style profile page
+  */
+const Profile = ({ name, skills, experiences, institution }) => {
+  // Prepare profile sections which will output in UI
   const sections = [
     { title: "Education", component: <EducationSection {...institution} /> },
     { title: "Skills", component: <SkillSection {...skills} /> },
@@ -305,22 +304,19 @@ const Profile = (props) => {
     },
   ];
 
-  /* 
-  Put together profile by passing data into each section and combining it into 
-  a resume-style profile page
-  */
+  // Set up each section to be a distinct Accordion item
   return (
     <Container fluid className="profile py-2 px-auto">
       <Row>
         <Col>
-          <h2>{props.name}</h2>
+          <h2>{name}</h2>
         </Col>
       </Row>
       {sections.map(({ title, component }) => {
         return (
           <Row key={title}>
             <Col className="mx-0 px-0">
-              <Accordion defaultActiveKey={title}>
+              <Accordion defaultActiveKey={title} flush>
                 <Accordion.Item eventKey={title}>
                   <Accordion.Header>
                     <h4>{title}</h4>

@@ -3,11 +3,19 @@ import { Nav, Tab, Container, Row, Col } from "react-bootstrap";
 import "../styles/App.css";
 import HomePage from "./HomePage";
 import Profile from "../components/Profile";
+import raniProfile from "../data/raniProfile.json";
 
 const ACTIVE_TAB_CLASSES = "tab tab-selected";
 const DEFAULT_TAB_CLASSES = "tab";
 
-const AboutPageNav = (props) => {
+/* 
+Component for navigation tabs on left side of page (top for small screens). 
+These tabs will fit into one of the two main AboutPage columns.
+
+Expected props:
+tabClasses - Object with string values. These hold CSS class names per tab
+*/
+const AboutPageNav = ({ tabClasses }) => {
   const tabs = [
     { id: "aboutUs", title: "About Sunbird Web" },
     { id: "aboutMatt", title: "About Matt" },
@@ -15,10 +23,10 @@ const AboutPageNav = (props) => {
   ];
 
   return (
-    <Nav fill className="flex-column" id="AboutPageNav">
+    <Nav id="AboutPageNav" fill className="flex-column">
       {tabs.map(({ id, title }) => {
         return (
-          <Nav.Item key={id} id={id} className={props.tabClasses[id]}>
+          <Nav.Item key={id} id={id} className={tabClasses[id]}>
             <Nav.Link eventKey={id}>{title}</Nav.Link>
           </Nav.Item>
         );
@@ -27,6 +35,10 @@ const AboutPageNav = (props) => {
   );
 };
 
+/* 
+Exported component that combines a general about page and individual profile
+pages into a general About Page.
+*/
 function AboutPage(props) {
   /* 
   Set up background colors per side tab. Need to store which tab is currently
@@ -60,19 +72,43 @@ function AboutPage(props) {
     setActiveTab(eventKey);
   };
 
+  // Prepare data for each profile
+  let rani = {
+    name: raniProfile.name,
+    skills: raniProfile.skills,
+    experiences: raniProfile.experiences,
+    institution: raniProfile.education.institution,
+  };
+
+  let matt = {
+    name: "Matt",
+    skills: raniProfile.skills,
+    experiences: raniProfile.experiences,
+    institution: raniProfile.education.institution,
+  };
+
   return (
     <Tab.Container
       defaultActiveKey="aboutUs"
       onSelect={(eventKey) => handleTabColor(eventKey)}
     >
       <Container id="AboutPage" className="d-flex justify-content-center" fluid>
-        <Row className="px-0 py-2" style={{ width: "100%", minHeight: "80vh" }}>
-          <Col sm={12} md={1} className="py-2 px-0">
+        <Row
+          className="px-0 py-2 justify-content-center"
+          style={{ width: "100%", minHeight: "80vh" }}
+        >
+          <Col
+            sm={12}
+            md
+            id="AboutPageNavColumn"
+            style={{ minWidth: "fit-content", maxWidth: "max-content" }}
+            className="py-2 px-0"
+          >
             <AboutPageNav tabClasses={tabClasses} />
           </Col>
           <Col
             sm={12}
-            md={11}
+            md
             className="d-flex align-items-top justify-content-left px-0 my-2 content"
           >
             <Tab.Content style={{ width: "100%" }}>
@@ -80,10 +116,10 @@ function AboutPage(props) {
                 <HomePage />
               </Tab.Pane>
               <Tab.Pane eventKey="aboutMatt">
-                <Profile name="Matt" />
+                <Profile {...matt} />
               </Tab.Pane>
               <Tab.Pane eventKey="aboutRani">
-                <Profile name="Rani" />
+                <Profile {...rani} />
               </Tab.Pane>
             </Tab.Content>
           </Col>
