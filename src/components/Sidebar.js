@@ -28,6 +28,9 @@ function Sidebar(props) {
           <Nav.Item>
             <Link to="/stack">Our Stack</Link>
           </Nav.Item>
+          <Nav.Item>
+            <Link to="/contact">Contact Us</Link>
+          </Nav.Item>
           <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
             <Item href="#action3">Action</Item>
             <Item href="#action4">Another action</Item>

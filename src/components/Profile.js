@@ -28,7 +28,9 @@ const EducationSection = ({ name, gradYear, degrees, minors }) => {
             <span>{name}</span>
           </Col>
           <Col xs={4} style={{ textAlign: "right" }}>
-            <span>{gradYear}</span>
+            <span>
+              <em>{gradYear}</em>
+            </span>
           </Col>
         </Row>
         <Row>
@@ -245,12 +247,14 @@ const Experience = ({ role, dates, organization, location, bulletPoints }) => {
             <p className="my-0">
               <strong>{role}</strong>
             </p>
-            <small>
-              <strong>{organization}</strong>, {location}
+            <small style={{ opacity: 0.7, fontWeight: 550 }}>
+              {organization}, {location}
             </small>
           </Col>
           <Col xs={4} style={{ textAlign: "right" }}>
-            <span>{dates}</span>
+            <span>
+              <em>{dates}</em>
+            </span>
           </Col>
         </Row>
         <Row className="d-flex justify-content-between my-0">

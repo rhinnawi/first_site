@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import OurStack from "./pages/OurStack";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/about" component={AboutPage} />
           <Route path="/stack" component={OurStack} />
+          <Route path="/contact" component={ContactUs} />
           <Route component={NotFound} />
         </Switch>
       </main>
