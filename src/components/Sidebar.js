@@ -31,11 +31,11 @@ function Sidebar(props) {
           <Nav.Item>
             <Link to="/contact">Contact Us</Link>
           </Nav.Item>
-          <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-            <Item href="#action3">Action</Item>
-            <Item href="#action4">Another action</Item>
+          <NavDropdown title="Coming Soon..." id="offcanvasNavbarDropdown">
+            <Item href="#">Rani's Side Projects</Item>
+            <Item href="#">Matt's Side Projects</Item>
             <Divider />
-            <Item href="#action5">Something else here</Item>
+            <Item href="#">Sunbird Web News</Item>
           </NavDropdown>
         </Nav>
       </Offcanvas.Body>

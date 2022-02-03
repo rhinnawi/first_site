@@ -9,16 +9,16 @@ import {
   Accordion,
 } from "react-bootstrap";
 
-/*
-Profile section that outputs formatted educational information. Itms are split
-across two rows and stylised to be responsive for multiple screen widths.
-
-Expected props:
-name (string)
-gradYear (number)
-majors (array of strings)
-minors (array of strings)
-*/
+/**
+ * Component that generates profile section with Education info. Assumes one
+ * institution.
+ *
+ * @param {object} props Component props
+ * @param {string} props.name Name of institution
+ * @param {number} props.gradYear Year graduated from institution
+ * @param {string[]} props.degrees Degrees earned at institution
+ * @param {string[]} props.minors Minors completed at institution
+ */
 const EducationSection = ({ name, gradYear, degrees, minors }) => {
   return (
     <Row>
@@ -59,6 +59,17 @@ Object with the following properties:
   cardWidth (string in format '[number]rem')
   maxCardWidth (string in format '[number]rem')
 */
+/**
+ *
+ * @param {object} props Component props
+ * @param {string} props.category Descriptor for type of skills.
+ *                  Expected values: 'Technical', 'Language', 'Additional'
+ * @param {Object[]} props.skills Array of skill Objects with properties skill, notes
+ * @param {string} props.skills.skill Name of skill
+ * @param {string} props.skills.notes Secondary info about skill
+ * @param {string} props.cardWidth Base width of skill cards in format <number>rem
+ * @param {string} props.maxCardWidth Max width of skill cards in format <number>rem
+ */
 const SkillCards = ({
   category,
   skills,

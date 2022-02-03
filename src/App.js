@@ -9,6 +9,11 @@ import AboutPage from "./pages/AboutPage";
 import OurStack from "./pages/OurStack";
 import ContactUs from "./pages/ContactUs";
 
+/**
+ * Primary entry point for React application. Also contains all client-side
+ * routing and base structure for website.
+ * @component
+ */
 function App() {
   return (
     <div className="App">
