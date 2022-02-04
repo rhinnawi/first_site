@@ -47,21 +47,11 @@ const EducationSection = ({ name, gradYear, degrees, minors }) => {
   );
 };
 
-/* 
-Component that creates a skill card section. This is used for the Skills 
-section below to create each of the subsections for skill types.
-
-Expected prop:
-Object with the following properties:
-  category (string)
-  skills (Object[skills, notes])
-  cardColor (string)
-  cardWidth (string in format '[number]rem')
-  maxCardWidth (string in format '[number]rem')
-*/
 /**
+ * Component that creates a skill card section. This is used for the Skills
+ * section below to create each of the subsections for skill types.
  *
- * @param {object} props Component props
+ * @param {Object} props Component props
  * @param {string} props.category Descriptor for type of skills.
  *                  Expected values: 'Technical', 'Language', 'Additional'
  * @param {Object[]} props.skills Array of skill Objects with properties skill, notes
@@ -138,19 +128,22 @@ const SkillCards = ({
   );
 };
 
-/* 
-This component creates a profile that showcases technical, language, and 
-'additional' skills. They are outputted as cards with the card size depending
-upon the length of the skill with the longest name.
-
-Expected props:
-technicalSkills - Array of Objects with properties: 
-  skill (string), notes (string)
-languageSkills - Array of Objects with properties:
-  skill (string), notes (string)
-additionalSkills - Array of Objects with properties:
-  skill (string)
-*/
+/**
+ * This component creates a profile that showcases technical, language, and
+ * 'additional' skills. They are outputted as cards with the card size depending
+ * upon the length of the skill with the longest name.
+ *
+ * @param {Object} props component properties
+ * @param {Object[]} props.technicalSkills array of technical skills
+ * @param {string} props.technicalSkills.skill name of technical skill
+ * @param {string} props.technicalSkills.notes proficiency level of technical skill
+ * @param {Object[]} props.languageSkills array of language skills
+ * @param {string} props.languageSkills.skill name of language
+ * @param {string} props.languageSkills.notes explanation of language proficiency
+ * @param {Object[]} props.additionalSkills array of non-technical, non-language skill
+ * @param {string} props.additionalSkills.skill name of additional skill
+ * @param {string} props.additionalSkills.notes empty string - placeholder
+ */
 const SkillSection = (props) => {
   let technicalSkills = props.technicalSkills;
   let languageSkills = props.languageSkills;
@@ -238,17 +231,17 @@ const SkillSection = (props) => {
   );
 };
 
-/* 
-Takes in an object with the properties described below and generates a section 
-for a single experience.
-
-Expected properties:
-  role - String
-  dates - String 
-  organization - String
-  location - String
-  bulletPoints - Array of Strings
-*/
+/**
+ * Takes in an object with the properties described below and generates a section
+ * for a single experience.
+ *
+ * @param {Object} props component props
+ * @param {string} props.role title of role
+ * @param {string} props.dates start and end dates in "MM YYYY - MM YYY" format
+ * @param {string} props.organization by / with whom work was done
+ * @param {string} props.location city where experience took place
+ * @param {string[]} props.bulletPoints array of descriptions for experience
+ */
 const Experience = ({ role, dates, organization, location, bulletPoints }) => {
   return (
     <Row>
@@ -284,14 +277,14 @@ const Experience = ({ role, dates, organization, location, bulletPoints }) => {
   );
 };
 
-/* 
-Simple component for taking in array of experiences as a prop and outputting
-them into a coherent skills section.
-
-Expected props:
- experiences - array of Objects with properties detailed for Experience
- component above.
-*/
+/**
+ * Simple component for taking in array of experiences as a prop and outputting
+ * them into a coherent skills section.
+ *
+ * @param {Object} props
+ * @param {Object[]} experiences array of Objects with props for Experience
+ *                    component above
+ */
 const ExperienceSection = ({ experiences }) => {
   return (
     <Row>
@@ -304,10 +297,21 @@ const ExperienceSection = ({ experiences }) => {
   );
 };
 
-/* 
-  Put together profile by passing data into each section and combining it into 
-  a resume-style profile page
-  */
+/**
+ * Put together profile by passing data into each section and combining it into
+ * a resume-style profile page.
+ *
+ * NOTE: Props that are object or array types are described further in JSDocs
+ * for components whereby they are called.
+ *
+ * @param {Object} props component properties
+ * @param {string} props.name name at top of profile page
+ * @param {Object} props.skills collection of skills split into technicalSkills,
+ *                  languageSkills, and additionalSkills properties.
+ * @param {Object[]} props.experiences array of Objects describing work experiences
+ * @param {Object} props.institution information for an educational institutional
+ *                  attended by person to whom the profile belongs
+ */
 const Profile = ({ name, skills, experiences, institution }) => {
   // Prepare profile sections which will output in UI
   const sections = [
