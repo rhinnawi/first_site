@@ -8,13 +8,21 @@ import raniProfile from "../data/raniProfile.json";
 const ACTIVE_TAB_CLASSES = "tab tab-selected";
 const DEFAULT_TAB_CLASSES = "tab";
 
-/* 
-Component for navigation tabs on left side of page (top for small screens). 
-These tabs will fit into one of the two main AboutPage columns.
-
-Expected props:
-tabClasses - Object with string values. These hold CSS class names per tab
-*/
+/**
+ * Objects holding CSS class names per tab in About page
+ *
+ * @typedef {Object} tabClasses
+ * @property {string} aboutUs CSS classes for About Sunbird Web tab
+ * @property {string} aboutMatt CSS classes for About Matt tab
+ * @property {string} aboutRani CSS classes for About Rani tab
+ */
+/**
+ * Component for navigation tabs on left side of page (top for small screens).
+ * These tabs will fit into one of the two main AboutPage columns.
+ *
+ * @param {Object} props Component props
+ * @param {tabClasses} props.tabClasses CSS class names per tab
+ */
 const AboutPageNav = ({ tabClasses }) => {
   const tabs = [
     { id: "aboutUs", title: "About Sunbird Web" },
@@ -46,13 +54,19 @@ function AboutPage(props) {
   correlate with the setTabBackgrounds property that is different from the rest
   */
   const [activeTab, setActiveTab] = useState("aboutUs");
+  /** @type {tabClasses} */
   const [tabClasses, setTabClasses] = useState({
     aboutUs: ACTIVE_TAB_CLASSES,
     aboutMatt: DEFAULT_TAB_CLASSES,
     aboutRani: DEFAULT_TAB_CLASSES,
   });
 
-  // Function for setting up new tab backgrounds
+  /**
+   * Function for setting up new tab backgrounds
+   * @param {string} oldTab Name of current tab
+   * @param {string} newTab Name of new tab clicked on
+   * @returns {tabClasses} Updated CSS classes per tab based on new active tab
+   */
   const updateTabClasses = (oldTab, newTab) => {
     let newClasses = { ...tabClasses };
     newClasses[oldTab] = DEFAULT_TAB_CLASSES;
@@ -62,7 +76,7 @@ function AboutPage(props) {
   };
 
   /*
-  When a *new* tab is selected, change its background to be transparent. 
+  When a new tab is selected, change its background to be transparent. 
   Revert previous tab's background to default color.
   */
   const handleTabColor = (eventKey) => {
