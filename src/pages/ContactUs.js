@@ -14,19 +14,20 @@ const ContactCard = ({ name, phoneNumber, email }) => {
         </Row>
         <Row>
           <Col>
-            <Row>
-              <Col>
+            <Row className="d-flex justify-content-between">
+              <Col md="auto" className="flex-xs-shrink-1">
                 <Card.Text style={{ textAlign: "justify" }}>
                   <strong>Cell:</strong> {phoneNumber}
                 </Card.Text>
               </Col>
-            </Row>
-            <Row>
-              <Col>
+              <Col md="auto">
                 <Card.Text>
                   <strong>E-mail:</strong> {email}
                 </Card.Text>
               </Col>
+            </Row>
+            <Row>
+              <Col>Social Media links go here</Col>
             </Row>
           </Col>
         </Row>
