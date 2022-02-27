@@ -6,12 +6,31 @@ const { Text, Group, Label, Control } = Form;
 const ContactCard = ({ name, phoneNumber, email }) => {
   return (
     <Card>
-      <Card.Title>{name}</Card.Title>
-      <Card.Body>
-        <Card.Text>Contact Us</Card.Text>
+      <Card.Body className="p-2">
+        <Row>
+          <Col>
+            <Card.Title>{name}</Card.Title>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Row>
+              <Col>
+                <Card.Text style={{ textAlign: "justify" }}>
+                  <strong>Cell:</strong> {phoneNumber}
+                </Card.Text>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Card.Text>
+                  <strong>E-mail:</strong> {email}
+                </Card.Text>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </Card.Body>
-      <Card.Text>{phoneNumber}</Card.Text>
-      <Card.Text>{email}</Card.Text>
     </Card>
   );
 };
@@ -22,6 +41,8 @@ const ContactUs = (props) => {
     { name: "Matt", phoneNumber: "987-654-3210", email: "matt@sunbirdweb.com" },
   ];
 
+  const required = () => <span style={{ color: "red " }}>*</span>;
+
   return (
     <Container>
       <Row>
@@ -30,7 +51,7 @@ const ContactUs = (props) => {
           <p>
             We're excited to have you reach out! Please find our contact info
             below. You may also use the form at the bottom of the page to
-            directly email us from here!
+            directly email us from here.
           </p>
         </Col>
       </Row>
@@ -52,12 +73,12 @@ const ContactUs = (props) => {
               <Control type="text" placeholder="Luke Skywalker" />
             </Group>
             <Group>
-              <Label>E-Mail Address</Label>
+              <Label>E-Mail Address{required()}</Label>
               <Control type="email" placeholder="name@example.com" />
               <Text>This will allow us to respond to you.</Text>
             </Group>
             <Group>
-              <Label>Message</Label>
+              <Label>Message{required()}</Label>
               <Control as="textarea" placeholder="Your message goes here." />
             </Group>
             {/* TODO: Set up Button be disabled until all fields are filled in */}
