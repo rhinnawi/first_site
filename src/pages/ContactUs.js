@@ -1,9 +1,22 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLinkedin,
+  faTwitter,
+  faDiscord,
+} from "@fortawesome/free-brands-svg-icons";
+import "../styles/App.css";
 
 const { Text, Group, Label, Control } = Form;
 
 const ContactCard = ({ name, phoneNumber, email }) => {
+  const socialMediaLinks = [
+    { icon: faLinkedin, site: "LinkedIn", link: "#" },
+    { icon: faTwitter, site: "Twitter", link: "#" },
+    { icon: faDiscord, site: "Discord", link: "#" },
+  ];
+
   return (
     <Card>
       <Card.Body className="p-2">
@@ -27,7 +40,11 @@ const ContactCard = ({ name, phoneNumber, email }) => {
               </Col>
             </Row>
             <Row>
-              <Col>Social Media links go here</Col>
+              <Col>
+                {socialMediaLinks.map(({ icon, site, link }) => {
+                  return <FontAwesomeIcon icon={icon} size="2x" />;
+                })}
+              </Col>
             </Row>
           </Col>
         </Row>
